@@ -1,113 +1,181 @@
-import Image from 'next/image'
+import WidthWrapper from "@/components/WidthWrapper/WidthWrapper";
+import { buttonVariants } from "@/components/ui/button";
+import Image from "next/image";
+import Link from "next/link";
+import { FaArrowRight,FaFilePdf } from "react-icons/fa";
+import { GiArchiveRegister } from "react-icons/gi";
+import { HiChatAlt2 } from "react-icons/hi";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
+    <main>
+      <WidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center">
+        <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 bg-white animate-bounce px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
+          <p className="text-sm font-semibold text-gray-700">
+            PDFWhisper is now public
+          </p>
+        </div>
+        <h1 className=" max-w-4xl text-4xl md:text-6xl lg:text-7xl font-bold text-center">
+          Unlock the Power of Conversational
+          <span className="text-primary"> PDFs!</span>
+        </h1>
+        <p className="mt-5 max-w-prose text-secondary-foreground/70 sm:text-2xl">
+          <span className="text-primary font-normal">PDFWhisper </span>
+          Facilitating Dynamic Conversations Inside Your PDFs...
         </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <Link
+          className={buttonVariants({
+            size: "lg",
+            className:
+              "text-base mt-10 py-6 bg-foreground hover:animate-out hover:repeat-1",
+          })}
+          href={`/dashboard`}
+          target="_blank"
+        >
+          Get Start <FaArrowRight className="ml-2 " />
+        </Link>
+      </WidthWrapper>
+
+      {/* Background and banner image */}
+      <div>
+        <div className="relative isolate">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none fixed w-full -translate-x-52 -z-10 overflow-hidden blur-3xl sm:-top-80"
           >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+            <div
+              style={{ clipPath: "circle(50% at 50% 50%)" }}
+              className="relative fixed left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem]  -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-transparent opacity-50 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             />
-          </a>
+          </div>
+
+          <div>
+            <div className="mx-auto max-w-6xl px-6 lg:px-8">
+              <div className="mt-16 flow-root sm:mt-24">
+                <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                  <Image
+                    src="/dashboard-preview.jpg"
+                    alt="product preview"
+                    width={1364}
+                    height={866}
+                    quality={100}
+                    className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            aria-hidden="true"
+            className="pointer-events-none fixed w-full  translate-y-[90vh] translate-x-14  -z-10   overflow-hidden blur-3xl sm:-top-80"
+          >
+            <div
+              style={{ clipPath: "circle(50% at 50% 50%)" }}
+              className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem]  translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-transparent opacity-50 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+            />
+          </div>
         </div>
       </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      <WidthWrapper className="mx-auto mb-32 mt-32   sm:mt-56">
+        <div className="mb-12 px-6 lg:px-8">
+          <div className="mx-auto max-w-2xl sm:text-center">
+            <h2 className="mt-2 font-bold text-4xl text-gray-900 sm:text-5xl">
+              Start chatting in minutes
+            </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Chatting to your PDF files has never been easier than with PDFWhisper.
+            </p>
+          </div>
+        </div>
 
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+        {/* steps */}
+        <div className="flex w-full divide-x-2 mx-auto border-y-2">
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+          {/* step1 */}
+          <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative ">
+            <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
+              1
             </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+            <span>
+              <GiArchiveRegister className="text-4xl text-primary" />
+            </span>
+            <p className="text-primary text-2xl ">Sign up for an account</p>
+            <p>
+              {" "}
+              Either starting out with a free plan or choose our{" "}
+              <Link
+                href="/pricing"
+                className="text-blue-700 underline underline-offset-2"
+              >
+                pro plan
+              </Link>
+              .
+            </p>
+            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full">
+              <FaArrowRight />
+            </div>
+          </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+          {/* step2 */}
+          <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative ">
+            <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
+              2
             </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
+            <span>
+              <FaFilePdf className="text-4xl text-primary" />
+            </span>
+            <p className="text-primary text-2xl "> Upload your PDF file</p>
+            <p>
+              We&apos;ll process your file and make it ready for you to chat
+              with.
+              .
+            </p>
+            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full">
+              <FaArrowRight />
+            </div>
+          </div>{" "}
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
+          {/* step3 */}
+          <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative">
+            <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
+              3
             </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+            <span>
+              <HiChatAlt2 className="text-4xl text-primary" />
+            </span>
+            <p className="text-primary text-2xl ">  Start asking questions</p>
+            <p>
+              It&apos;s that simple. Try out Quill today - it really takes
+              less than a minute.
+              .
+            </p>
+
+          </div>
+
+        </div>
+
+        <div className='mx-auto max-w-6xl px-6 lg:px-8'>
+          <div className='mt-16 flow-root sm:mt-24'>
+            <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
+              <Image
+                src='/file-upload-preview.jpg'
+                alt='uploading preview'
+                width={1419}
+                height={732}
+                quality={100}
+                className='rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10'
+              />
+            </div>
+          </div>
+        </div>
+      </WidthWrapper>
     </main>
-  )
+  );
+}
+{
+  /*<div className="relative flex place-content-start before:absolute before:h-[100vh] before:w-[100vw] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-  after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+
+      </div>*/
 }
