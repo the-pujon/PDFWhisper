@@ -5,7 +5,7 @@ import {
     getKindeServerSession,
 } from '@kinde-oss/kinde-auth-nextjs/server'
 import WidthWrapper from '@/components/WidthWrapper/WidthWrapper'
-import { buttonVariants } from '../button'
+import { buttonVariants } from '../ui/button'
 
 const Navbar = () => {
 
