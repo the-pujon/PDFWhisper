@@ -15,11 +15,13 @@ const Page = () => {
   trpc.authCallback.useQuery(undefined,{
     onSuccess: ({ success }) => {
       if (success) {
+        console.log('sdfhjgs')
         // user is synced to db
         router.push(origin ? `/${origin}` : '/dashboard')
       }
     },
     onError: (err) => {
+      console.log("here")
       if (err.data?.code === 'UNAUTHORIZED') {
         router.push('/sign-in')
       }

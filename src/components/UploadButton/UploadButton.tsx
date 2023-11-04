@@ -1,6 +1,7 @@
 import React,{ useState } from 'react'
 import { Button } from '../ui/button'
-import { Dialog, DialogContent, DialogTrigger } from '../ui/dialog'
+import { Dialog,DialogContent,DialogTrigger } from '../ui/dialog'
+import UploadPDF from '../UploadPDF/UploadPDF'
 
 const UploadButton = () => {
     const [isOpen,setIsOpen] = useState<boolean>(false)
@@ -17,7 +18,7 @@ const UploadButton = () => {
             </DialogTrigger>
 
             <DialogContent>
-                example content
+                <UploadPDF />
             </DialogContent>
 
         </Dialog>

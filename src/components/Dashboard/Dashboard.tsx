@@ -10,6 +10,7 @@ import UploadButton from '../UploadButton/UploadButton'
 import { FaPlus,FaRegTrashAlt } from 'react-icons/fa'
 import { HiChatAlt2 } from 'react-icons/hi'
 import { FiLoader } from "react-icons/fi"
+import { useToast } from '../ui/use-toast'
 
 
 const Dashboard = () => {
@@ -20,6 +21,8 @@ const Dashboard = () => {
 
     const utils = trpc.useContext()
 
+    const {toast} = useToast()
+
     const { data: files,isLoading } =
         trpc.getUserFiles.useQuery()
 
@@ -27,6 +30,10 @@ const Dashboard = () => {
         trpc.deleteFile.useMutation({
             onSuccess: () => {
                 utils.getUserFiles.invalidate()
+                toast({
+                    variant: "destructive",
+                    title: "Deleted Successfully",
+                  });
             },
             onMutate({ id }) {
                 setCurrentlyDeletingFile(id)

@@ -1,4 +1,4 @@
-import { AppRouter } from "@/server"
+import { AppRouter } from "@/trpc"
 import { createTRPCReact } from "@trpc/react-query"
 
 

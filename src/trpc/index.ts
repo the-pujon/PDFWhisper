@@ -8,10 +8,15 @@ export const appRouter = router({
     authCallback: publicProcedure.query(async () => {
         const { getUser } = getKindeServerSession()
         const user = getUser()
+        console.log(user)
+        console.log("here")
 
+        console.log(user.id,user.email)
 
-        if (!user.id || !user.email)
+        if (!user.id || !user.email || !user) {
+            console.log("dshgsdhjgfsdgfj")
             throw new TRPCError({ code: 'UNAUTHORIZED' })
+        }
 
         // check if the user is in the database
         const dbUser = await db.user.findFirst({
@@ -19,6 +24,8 @@ export const appRouter = router({
                 id: user.id,
             },
         })
+
+        console.log(dbUser)
 
         if (!dbUser) {
             // create user in db
@@ -33,39 +40,47 @@ export const appRouter = router({
         return { success: true }
     }),
     getUserFiles: privateProcedure.query(async ({ ctx }) => {
-
-
-
         return await db.file.findMany({
             where: {
                 userId: ctx.userId
             }
         })
     }),
-    deleteFile: privateProcedure
-    .input(z.object({ id: z.string() }))
-    .mutation(async ({ ctx, input }) => {
-      const { userId } = ctx
+    getFile: privateProcedure.input(z.object({ key: z.string() })).mutation(async ({ ctx,input }) => {
+        const file = await db.file.findFirst({
+            where: {
+                key: input.key,
+                userId: ctx.userId
+            }
+        })
 
-      const file = await db.file.findFirst({
-        where: {
-          id: input.id,
-          userId,
-        },
-      })
+        if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
 
-      console.log(file)
-
-      if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
-
-      await db.file.delete({
-        where: {
-          id: input.id,
-        },
-      })
-
-      return file
+        return file
     }),
+    deleteFile: privateProcedure
+        .input(z.object({ id: z.string() }))
+        .mutation(async ({ ctx,input }) => {
+            const { userId } = ctx
+
+            const file = await db.file.findFirst({
+                where: {
+                    id: input.id,
+                    userId,
+                },
+            })
+
+
+            if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
+
+            await db.file.delete({
+                where: {
+                    id: input.id,
+                },
+            })
+
+            return file
+        }),
 });
 
 
