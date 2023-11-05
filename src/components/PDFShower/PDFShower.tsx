@@ -31,6 +31,7 @@ import {
 } from '../ui/dropdown-menu'
 
 import SimpleBar from 'simplebar-react'
+import 'simplebar-react/dist/simplebar.min.css';
 //import PdfFullscreen from './PdfFullscreen'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
@@ -76,7 +77,7 @@ const PDFShower = ({ url }: PDFShowerProps) => {
     resolver: zodResolver(CustomPageValidator),
   })
 
-  console.log(errors)
+
 
   const { width, ref } = useResizeDetector()
 
@@ -140,7 +141,7 @@ const PDFShower = ({ url }: PDFShowerProps) => {
           </Button>
         </div>
 
-        {/*<div className='space-x-2'>
+        <div className='space-x-2'>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
@@ -180,7 +181,7 @@ const PDFShower = ({ url }: PDFShowerProps) => {
           </Button>
 
 
-        </div>*/}
+        </div>
       </div>
 
       <div className='flex-1 w-full max-h-screen'>
@@ -220,7 +221,7 @@ const PDFShower = ({ url }: PDFShowerProps) => {
                 className={cn(isLoading ? 'hidden' : '')}
                 width={width ? width : 1}
                 pageNumber={currPage}
-                scale={1}
+                scale={scale}
                 rotate={rotation}
                 key={'@' + scale}
                 loading={

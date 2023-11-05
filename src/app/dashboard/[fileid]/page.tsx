@@ -1,5 +1,5 @@
 
-import Chats from '@/components/Chats/Chats'
+import Chats from '@/components/Chats/ChatsWrapper/ChatsWrapper'
 import PDFShower from '@/components/PDFShower/PDFShower'
 import { db } from '@/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
