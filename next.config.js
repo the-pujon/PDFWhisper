@@ -23,6 +23,16 @@ const nextConfig = {
       config.resolve.alias.encoding = false
       return config
     },
+
+
   }
 
   module.exports = nextConfig
+
+//  module.exports = {
+//    experimental: {
+//        modern: true,
+//        dynamicImports: true,
+//        css: true
+//    }
+//}

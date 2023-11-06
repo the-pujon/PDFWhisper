@@ -1,5 +1,5 @@
 
-import Chats from '@/components/Chats/ChatsWrapper/ChatsWrapper'
+import ChatsWrapper from '@/components/Chats/ChatsWrapper/ChatsWrapper'
 import PDFShower from '@/components/PDFShower/PDFShower'
 import { db } from '@/db'
 import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
@@ -42,7 +42,7 @@ const Page = async ({ params }: PageProps) => {
         </div>
 
         <div className='shrink-0 flex-[0.75] border-t border-gray-200 lg:w-96 lg:border-l lg:border-t-0'>
-          <Chats   />
+          <ChatsWrapper fileId={file.id}  />
         </div>
       </div>
     </div>
