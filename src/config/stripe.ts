@@ -24,6 +24,20 @@ export const SubscriptionPlan = [
                 production: ''
             }
         }
+    },
+    {
+        name: 'Custom',
+        slug: 'custom',
+        quota: 'custom',
+        PagePerPdf: 'custom',
+        price: {
+            amount: 'custom',
+            priceIds: {
+                test: process.env.STRIPE_PRICE_API_ID,
+                production: ''
+            }
+        }
     }
+
 
 ]
