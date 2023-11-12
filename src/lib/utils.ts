@@ -8,7 +8,7 @@ export function absoluteUrl(path: string) {
   if (typeof window !== 'undefined') return path
   console.log(process.env.VERCEL_URL)
   if (process.env.VERCEL_URL)
-    return `https://${process.env.VERCEL_URL}${path}`
+    return `https://pdf-whisper-puce.vercel.app${path}`
   return `http://localhost:${process.env.PORT ?? 3000
     }${path}`
 }
