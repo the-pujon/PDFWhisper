@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 export function absoluteUrl(path: string) {
   if (typeof window !== 'undefined') return path
   if (process.env.VERCEL_URL)
-    return `https://https://pdf-whisper-eight.vercel.app${path}`
+    return `https://pdf-whisper-eight.vercel.app${path}`
   return `http://localhost:${
     process.env.PORT ?? 3000
   }${path}`
