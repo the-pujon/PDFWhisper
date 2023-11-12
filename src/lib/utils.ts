@@ -1,4 +1,4 @@
-import { type ClassValue, clsx } from "clsx"
+import { type ClassValue,clsx } from "clsx"
 import { twMerge } from "tailwind-merge"
 
 export function cn(...inputs: ClassValue[]) {
@@ -6,9 +6,9 @@ export function cn(...inputs: ClassValue[]) {
 }
 export function absoluteUrl(path: string) {
   if (typeof window !== 'undefined') return path
+  console.log(process.env.VERCEL_URL)
   if (process.env.VERCEL_URL)
-    return `https://pdf-whisper-eight.vercel.app${path}`
-  return `http://localhost:${
-    process.env.PORT ?? 3000
-  }${path}`
+    return `https://${process.env.VERCEL_URL}${path}`
+  return `http://localhost:${process.env.PORT ?? 3000
+    }${path}`
 }
