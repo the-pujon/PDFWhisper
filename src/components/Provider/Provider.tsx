@@ -3,6 +3,7 @@ import React,{ PropsWithChildren,useState } from 'react'
 import { QueryClient,QueryClientProvider } from "@tanstack/react-query"
 import { trpc } from '@/app/_trpc/client'
 import { httpBatchLink } from "@trpc/client"
+import { absoluteUrl } from '@/lib/utils'
 
 const Provider = ({ children }: PropsWithChildren) => {
     const [queryClient] = useState(() => new QueryClient())
@@ -10,7 +11,7 @@ const Provider = ({ children }: PropsWithChildren) => {
         trpc.createClient({
             links: [
                 httpBatchLink({
-                    url: 'https://pdf-whisper-eight.vercel.app/api/trpc'
+                    url: absoluteUrl("/api/trpc"),
                 })
             ]
         })
