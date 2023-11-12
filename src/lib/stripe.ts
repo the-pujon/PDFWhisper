@@ -54,7 +54,7 @@ export async function getUserSubscriptionPlan() {
         isCanceled = stripePlan.cancel_at_period_end
     }
 
-console.log(plan)
+
 
     return {
         ...plan,
