@@ -3,7 +3,7 @@ import { inferRouterOutputs } from '@trpc/server'
 
 type RouterOutput = inferRouterOutputs<AppRouter>
 
-type Messages = RouterOutput['getMessage']['message']
+type Messages = RouterOutput['getMessage']['messages']
 
 type OmitText = Omit<Messages[number], 'text'>
 
