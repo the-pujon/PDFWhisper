@@ -55,6 +55,8 @@ export const POST = async (req: NextRequest) => {
     pineconeIndex,
   });
 
+  console.log(vectorStore)
+
   const results = await vectorStore.similaritySearch(message,4);
 
   const previousMsg = await db.message.findMany({

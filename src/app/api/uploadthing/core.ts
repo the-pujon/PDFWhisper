@@ -69,9 +69,13 @@ export const ourFileRouter = {
           openAIApiKey: process.env.OPENAI_API_KEY,
         });
 
-        await PineconeStore.fromDocuments(pageLevelDocs,embeddings,{
+      const p =  await PineconeStore.fromDocuments(pageLevelDocs,embeddings,{
           pineconeIndex,
         });
+
+
+        console.log(embeddings)
+        console.log(p)
 
 
         await db.file.update({

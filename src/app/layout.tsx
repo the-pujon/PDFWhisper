@@ -24,6 +24,8 @@ export default function RootLayout({
     <html lang="en">
       <Provider>
         <body className={cn(` min-h-screen bg-background  font-sans antialiased grainy ${inter.className}`)}>
+
+
           <Navbar />
           <Toaster/>
           {children}
