@@ -32,9 +32,10 @@ datasource db {
 }
 
 model User {
+  name String
   id    String @id @unique //matches kinde user id
   email String @unique
-  user  String @default("user")
+  role  String @default("user")
 
   File    File[]
   Message Message[]

@@ -25,6 +25,7 @@ export const appRouter = router({
         // check if the user is in the database
         const dbUser = await db.user.findFirst({
             where: {
+
                 id: user.id,
             },
         })
@@ -35,6 +36,7 @@ export const appRouter = router({
             // create user in db
             await db.user.create({
                 data: {
+                    name:user.given_name + ' ' +user.family_name,
                     id: user.id,
                     email: user.email,
                 },
@@ -206,6 +208,47 @@ export const appRouter = router({
             return { url: stripeSession.url }
         }
     ),
+    //updateUserRole: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ input }) => {
+    //    const { id } = input
+
+    //    const file = await db.user.update({
+    //        data: {
+    //            role: 'admin'
+    //        },
+    //        where: {
+    //            id: id
+    //        }
+    //    })
+
+    //    if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
+
+    //    return file
+    //}),
+    getUsers: privateProcedure.query(async ({ ctx }) => {
+        const { userId } = ctx
+
+        const { getUser } = getKindeServerSession()
+        const u = getUser()
+
+        console.log(u.given_name)
+
+
+
+        const admin = await db.user.findFirst({
+            where: {
+                id: userId
+            }
+        })
+
+
+
+        //if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
+
+        const users = await db.user.findMany()
+
+        return users
+
+    })
 });
 
 
