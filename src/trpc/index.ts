@@ -251,7 +251,10 @@ export const appRouter = router({
         })
 
 
-    })
+    }),
+    createFAQs: privateProcedure.mutation(async ({ ctx }) => { }),
+    updateFAQs: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx,input }) => { }),
+    deleteFAQs: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx,input }) => { })
 });
 
 
