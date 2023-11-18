@@ -12,13 +12,8 @@ export const appRouter = router({
     authCallback: publicProcedure.query(async () => {
         const { getUser } = getKindeServerSession()
         const user = getUser()
-        console.log(user)
-        console.log("here")
-
-        console.log(user.id,user.email)
 
         if (!user.id || !user.email || !user) {
-            console.log("dshgsdhjgfsdgfj")
             throw new TRPCError({ code: 'UNAUTHORIZED' })
         }
 
@@ -30,13 +25,11 @@ export const appRouter = router({
             },
         })
 
-        console.log(dbUser)
-
         if (!dbUser) {
             // create user in db
             await db.user.create({
                 data: {
-                    name:user.given_name + ' ' +user.family_name,
+                    name: user.given_name + ' ' + user.family_name,
                     id: user.id,
                     email: user.email,
                 },
@@ -160,7 +153,6 @@ export const appRouter = router({
                 },
             })
 
-            console.log("dbUser in index.ts 161",dbUser)
 
 
             if (!dbUser)
@@ -170,7 +162,7 @@ export const appRouter = router({
                 await getUserSubscriptionPlan()
 
 
-            console.log("Subscriptionplan in index.ts 168",subscriptionPlan)
+
 
             if (
                 subscriptionPlan.isSubscribed &&
@@ -208,31 +200,24 @@ export const appRouter = router({
             return { url: stripeSession.url }
         }
     ),
-    //updateUserRole: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ input }) => {
-    //    const { id } = input
+    updateUserRole: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ input }) => {
+        const { id } = input
 
-    //    const file = await db.user.update({
-    //        data: {
-    //            role: 'admin'
-    //        },
-    //        where: {
-    //            id: id
-    //        }
-    //    })
+        const file = await db.user.update({
+            data: {
+                role: 'admin'
+            },
+            where: {
+                id: id
+            }
+        })
 
-    //    if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
+        if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
 
-    //    return file
-    //}),
+        return file
+    }),
     getUsers: privateProcedure.query(async ({ ctx }) => {
         const { userId } = ctx
-
-        const { getUser } = getKindeServerSession()
-        const u = getUser()
-
-        console.log(u.given_name)
-
-
 
         const admin = await db.user.findFirst({
             where: {
@@ -240,13 +225,31 @@ export const appRouter = router({
             }
         })
 
-
-
-        //if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
+        if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
 
         const users = await db.user.findMany()
 
         return users
+
+    }),
+    deleteUser: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx,input }) => {
+        const { userId } = ctx
+        const { id } = input
+
+        const admin = await db.user.findFirst({
+            where: {
+                id: userId
+            }
+        })
+
+        if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
+
+        return await db.user.delete({
+            where: {
+                id: id
+            }
+        })
+
 
     })
 });

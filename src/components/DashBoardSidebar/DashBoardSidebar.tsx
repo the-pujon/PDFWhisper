@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import React from "react";
 import {
   FaRegFilePdf,
@@ -8,6 +12,8 @@ import {
 //import { FaRegCircleQuestion } from "react-icons/fa6";
 
 const DashBoardSidebar = () => {
+  const pathName = usePathname();
+
   return (
     <>
       <div className="flex flex-col items-center w-16 h-full overflow-hidden text-gray-700 bg-gray-100 rounded sm:hidden">
@@ -42,28 +48,40 @@ const DashBoardSidebar = () => {
       </div>
 
       {/* Big screen */}
-      <div className="md:flex flex-col items-center w-60 h-full overflow-hidden rounded divide-x hidden  ">
+      <div className="md:flex flex-col items-center w-60 h-full overflow-hidden rounded divide-x hidden !bg-white ">
         <div className="w-full ">
           <div className="flex flex-col items-center w-full ">
             <Link
-              className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300"
-              href="#"
+              className={`flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-primary hover:text-white transition-all duration-300 ${
+                pathName == "/dashboard" ? "bg-primary text-white" : ""
+              }`}
+              href="/dashboard"
             >
-              <FaRegFilePdf />
+              <FaRegFilePdf className="text-xl" />
               <span className="ml-2 text-sm font-medium"> My Files</span>
             </Link>
-            <a
-              className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300"
+            <Link
+              className={`flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-primary hover:text-white transition-all duration-300 ${
+                pathName == "/dashboard/manageFAQs"
+                  ? "bg-primary text-white"
+                  : ""
+              }`}
               href="#"
-            >   <FaRegQuestionCircle />
+            >
+              {" "}
+              <FaRegQuestionCircle className="text-xl" />
               <span className="ml-2 text-sm font-medium">Manage FAQs</span>
-            </a>
+            </Link>
 
             <Link
-              className="flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-gray-300"
+              className={`flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-primary hover:text-white transition-all duration-300 ${
+                pathName == "/dashboard/manageUsers"
+                  ? "bg-primary text-white"
+                  : ""
+              }`}
               href="/dashboard/manageUsers"
             >
-                 <FaRegUserCircle />
+              <FaRegUserCircle className="text-xl" />
               <span className="ml-2 text-sm font-medium">Manage Users</span>
             </Link>
           </div>
