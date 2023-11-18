@@ -32,7 +32,7 @@ datasource db {
 }
 
 model User {
-  name String
+  name  String
   id    String @id @unique //matches kinde user id
   email String @unique
   role  String @default("user")
@@ -82,4 +82,12 @@ model Message {
   userId String
   File   File?  @relation(fields: [fileId], references: [id])
   fileId String
+}
+
+model FAQs {
+  id        String   @id @default(cuid())
+  question  String
+  answer    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
