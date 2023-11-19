@@ -252,7 +252,24 @@ export const appRouter = router({
 
 
     }),
-    createFAQs: privateProcedure.mutation(async ({ ctx }) => { }),
+    createFAQs: privateProcedure.input(z.object({ question: z.string(),answer: z.string() })).mutation(async ({ ctx,input }) => {
+        const { userId } = ctx
+
+        const admin = await db.user.findFirst({
+            where: {
+                id: userId
+            }
+        })
+
+        if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
+
+        return await db.fAQs.create({
+            data: {
+                question: input.question,
+                answer: input.answer
+            }
+        })
+    }),
     updateFAQs: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx,input }) => { }),
     deleteFAQs: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx,input }) => { })
 });

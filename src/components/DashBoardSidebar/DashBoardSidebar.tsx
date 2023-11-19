@@ -66,7 +66,7 @@ const DashBoardSidebar = () => {
                   ? "bg-primary text-white"
                   : ""
               }`}
-              href="#"
+              href="/dashboard/manageFAQs"
             >
               {" "}
               <FaRegQuestionCircle className="text-xl" />
