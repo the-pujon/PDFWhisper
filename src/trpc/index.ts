@@ -324,6 +324,21 @@ export const appRouter = router({
                 id: input.id
             }
         })
+    }),
+    getFAQs: privateProcedure.query(async ({ ctx }) => {
+
+        const { userId } = ctx
+
+        const admin = await db.user.findFirst({
+            where: {
+                id: userId
+            }
+        })
+
+        if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
+
+        return await db.fAQs.findMany()
+
     })
 });
 
