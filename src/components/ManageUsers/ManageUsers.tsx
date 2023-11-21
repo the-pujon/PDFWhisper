@@ -4,14 +4,12 @@ import { trpc } from "@/app/_trpc/client";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { differenceInDays, differenceInMonths, format } from "date-fns";
+import { differenceInDays, format } from "date-fns";
 import {
   MdOutlineAdminPanelSettings,
   MdOutlineCancel,

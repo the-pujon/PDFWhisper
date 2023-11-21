@@ -86,8 +86,8 @@ model Message {
 
 model FAQs {
   id        String   @id @default(cuid())
-  question  String
-  answer    String
+  question  String   @db.VarChar(1000)
+  answer    String   @db.VarChar(4000)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

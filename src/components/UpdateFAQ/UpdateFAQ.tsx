@@ -9,11 +9,21 @@ import { useContext } from "react";
 import { trpc } from "@/app/_trpc/client";
 import { MdOutlineCheck } from "react-icons/md";
 
-const AddFAQs = () => {
+interface UpdateFAQProps {
+  setUpdatableFAQ: React.Dispatch<
+    React.SetStateAction<{
+      question: string;
+      answer: string;
+      id: string;
+    } | null>
+  >;
+  updatableFAQ: { question: string; answer: string; id: string } | null;
+}
+const UpdateFAQ = ({ setUpdatableFAQ, updatableFAQ }: UpdateFAQProps) => {
   const { toast } = useToast();
   const utils = trpc.useContext();
 
-  const { mutate: FAQCreate } = trpc.createFAQs.useMutation({
+  const { mutate: FAQUpdate } = trpc.updateFAQs.useMutation({
     onSuccess: () => {
       utils.getFAQs.invalidate();
       toast({
@@ -22,7 +32,7 @@ const AddFAQs = () => {
           <div className="w-full flex items-center">
             <MdOutlineCheck className="text-2xl mr-2 p-1 bg-primary rounded-full text-white" />
             <span className="first-letter:capitalize">
-              successfully created
+              successfully updated
             </span>
           </div>
         ),
@@ -32,17 +42,19 @@ const AddFAQs = () => {
 
   return (
     <div className="p-5">
-      <div className="text-5xl text-black font-bold mb-5">Add FAQ</div>
+      <div className="text-5xl text-black font-bold mb-5">Update FAQ</div>
 
       <form
         onSubmit={(e) => {
           e.preventDefault();
+          setUpdatableFAQ(null);
 
-          FAQCreate({
+          FAQUpdate({
             //@ts-ignore
             question: e.target.question.value,
             //@ts-ignore
             answer: e.target.answer.value,
+            id: updatableFAQ?.id!,
           });
         }}
         className="flex flex-col gap-3 justify-center h-full"
@@ -58,8 +70,9 @@ const AddFAQs = () => {
             type="text"
             id="question"
             name="question"
-            placeholder="Question"
+            //placeholder="Question"
             className="w-full"
+            defaultValue={updatableFAQ?.question}
           />
         </div>{" "}
         <div className="grid w-full gap-1.5">
@@ -70,6 +83,7 @@ const AddFAQs = () => {
             placeholder="Type your message here."
             id="answer"
             name="answer"
+            defaultValue={updatableFAQ?.answer}
           />
         </div>
         <Button
@@ -85,4 +99,4 @@ const AddFAQs = () => {
   );
 };
 
-export default AddFAQs;
+export default UpdateFAQ;
