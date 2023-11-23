@@ -325,20 +325,8 @@ export const appRouter = router({
             }
         })
     }),
-    getFAQs: privateProcedure.query(async ({ ctx }) => {
-
-        const { userId } = ctx
-
-        const admin = await db.user.findFirst({
-            where: {
-                id: userId
-            }
-        })
-
-        if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
-
+    getFAQs: publicProcedure.query(async () => {
         return await db.fAQs.findMany()
-
     })
 });
 

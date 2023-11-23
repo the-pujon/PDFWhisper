@@ -1,8 +1,10 @@
+import Contact from "@/components/Contact/Contact";
+import ShowFAQs from "@/components/ShowFAQs/ShowFAQs";
 import WidthWrapper from "@/components/WidthWrapper/WidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight,FaFilePdf } from "react-icons/fa";
+import { FaArrowRight, FaFilePdf } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { HiChatAlt2 } from "react-icons/hi";
 
@@ -85,14 +87,14 @@ export default function Home() {
               Start chatting in minutes
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Chatting to your PDF files has never been easier than with PDFWhisper.
+              Chatting to your PDF files has never been easier than with
+              PDFWhisper.
             </p>
           </div>
         </div>
 
         {/* steps */}
         <div className="flex w-full divide-x-2 mx-auto border-y-2">
-
           {/* step1 */}
           <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative ">
             <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
@@ -117,7 +119,6 @@ export default function Home() {
               <FaArrowRight />
             </div>
           </div>
-
           {/* step2 */}
           <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative ">
             <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
@@ -129,14 +130,12 @@ export default function Home() {
             <p className="text-primary text-2xl "> Upload your PDF file</p>
             <p>
               We&apos;ll process your file and make it ready for you to chat
-              with.
-              .
+              with. .
             </p>
             <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full">
               <FaArrowRight />
             </div>
           </div>{" "}
-
           {/* step3 */}
           <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative">
             <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
@@ -145,31 +144,36 @@ export default function Home() {
             <span>
               <HiChatAlt2 className="text-4xl text-primary" />
             </span>
-            <p className="text-primary text-2xl ">  Start asking questions</p>
+            <p className="text-primary text-2xl "> Start asking questions</p>
             <p>
-              It&apos;s that simple. Try out Quill today - it really takes
-              less than a minute.
-              .
+              It&apos;s that simple. Try out Quill today - it really takes less
+              than a minute. .
             </p>
-
           </div>
-
         </div>
 
-        <div className='mx-auto max-w-6xl px-6 lg:px-8'>
-          <div className='mt-16 flow-root sm:mt-24'>
-            <div className='-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4'>
+        <div className="mx-auto max-w-6xl px-6 lg:px-8">
+          <div className="mt-16 flow-root sm:mt-24">
+            <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
               <Image
-                src='/file-upload-preview.jpg'
-                alt='uploading preview'
+                src="/file-upload-preview.jpg"
+                alt="uploading preview"
                 width={1419}
                 height={732}
                 quality={100}
-                className='rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10'
+                className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
               />
             </div>
           </div>
         </div>
+      </WidthWrapper>
+
+      <WidthWrapper>
+        <ShowFAQs />
+      </WidthWrapper>
+
+      <WidthWrapper>
+        <Contact />
       </WidthWrapper>
     </main>
   );
