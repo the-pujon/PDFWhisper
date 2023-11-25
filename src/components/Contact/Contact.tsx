@@ -7,54 +7,110 @@ import { Textarea } from "../ui/textarea";
 import { FaFacebook, FaGithub, FaLinkedin } from "react-icons/fa";
 import Link from "next/link";
 import emailjs from "@emailjs/browser";
+import { trpc } from "@/app/_trpc/client";
+import { useToast } from "../ui/use-toast";
+import { MdOutlineCheck } from "react-icons/md";
 
 const Contact = () => {
   const form = useRef<HTMLFormElement | null>(null);
+  const [isSending, setIsSending] = useState<string | null>(null);
+  const { toast } = useToast();
 
-  const [isSending, setIsSending] = useState<boolean>(false);
+  /**
+   * for creating contact information in db
+   */
+  const { mutate: createContact } =
+    trpc.contactUs.createContactInfo.useMutation({
+      onSuccess: () => {
+        toast({
+          variant: "default",
+          action: (
+            <div className="w-full flex items-center">
+              <MdOutlineCheck className="text-2xl mr-2 p-1 bg-primary rounded-full text-white" />
+              <span className="first-letter:capitalize">
+                Email sent successfully
+              </span>
+            </div>
+          ),
+        });
+        setIsSending(null);
+      },
+      onError(err) {
+        console.error(err);
+      },
+    });
 
-  const sendEmail = (e: React.FormEvent) => {
+  /**
+   * for creating feedbacks in db
+   */
+  const { mutate: createFeedback } =
+    trpc.feedbackInfo.createFeedback.useMutation({
+      onSuccess: () => {
+        toast({
+          variant: "default",
+          action: (
+            <div className="w-full flex items-center">
+              <MdOutlineCheck className="text-2xl mr-2 p-1 bg-primary rounded-full text-white" />
+              <span className="first-letter:capitalize">
+                Feedback sent successfully
+              </span>
+            </div>
+          ),
+        });
+        setIsSending(null);
+      },
+      onError(err) {
+        console.error(err);
+      },
+    });
+
+  const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (form.current) {
-      setIsSending(true);
-      const formData = new FormData(form.current);
-      const emailValue = formData.get("user_email");
-      console.log(emailValue);
-      //const firstName = formData.get("firstName");
-      //const lastName = formData.get("lastName");
-      //const fullName = firstName! + " " + lastName!;
-      //const message = formData.get("message");
+    if (!form.current) {
+      console.error("Form reference is null or not an HTMLFormElement");
+      return;
+    }
 
-      if (emailValue) {
-        emailjs
-          .sendForm(
-            "service_k5qob22",
-            "template_qlwnb2y",
-            form.current,
-            "RnEfwGQwiK81lV9K2"
-          )
-          .then(
-            (result) => {
-              console.log(result);
-              setIsSending(false);
-            },
-            (error) => {
-              console.log(error.text);
-            }
-          );
-      } else {
-        console.error("Email value is null or undefined");
+    const formData = new FormData(form.current);
+    const emailValue = formData.get("user_email");
+    const firstName = formData.get("user_name");
+    const lastName = formData.get("lastName");
+    const fullName = firstName! + " " + lastName!;
+    const message = formData.get("message");
+    const phone = formData.get("number");
+
+    if (emailValue && message && phone && fullName) {
+      try {
+        setIsSending("contact");
+        await emailjs.sendForm(
+          "service_k5qob22",
+          "template_qlwnb2y",
+          form.current,
+          "RnEfwGQwiK81lV9K2"
+        );
+
+        createContact({
+          name: fullName,
+          phone: phone! as string,
+          email: emailValue! as string,
+          message: message! as string,
+        });
+      } catch (error) {
+        console.error("Error:", error);
       }
     } else {
-      console.error("Form reference is null or not an HTMLFormElement");
+      toast({
+        variant: "destructive",
+        title: "Please fill all fields",
+      });
     }
   };
-
   return (
     <>
       <div className="flex justify-center items-center h-screen">
         <div className="container mx-auto my-4 px-4 lg:px-20">
+          {/* contact */}
           <form
             ref={form}
             onSubmit={(e) => sendEmail(e)}
@@ -69,29 +125,34 @@ const Contact = () => {
                 type="text"
                 name="user_name"
                 placeholder="First Name*"
+                required
               />
               <input
                 className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="text"
                 name="lastName"
                 placeholder="Last Name*"
+                required
               />
               <input
                 className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="email"
                 name="user_email"
                 placeholder="Email*"
+                required
               />
               <input
                 className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="number"
                 name="number"
                 placeholder="Phone*"
+                required
               />
             </div>
             <div className="my-4">
               <textarea
                 placeholder="Message*"
+                required
                 name="message"
                 className="w-full h-32 bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
               ></textarea>
@@ -102,7 +163,7 @@ const Contact = () => {
                 className="uppercase text-sm font-bold tracking-wide bg-primary text-gray-100 p-3 rounded-lg w-full text-center flex items-center justify-center
                           focus:outline-none focus:shadow-outline"
               >
-                {isSending ? (
+                {isSending === "contact" ? (
                   <FiLoader
                     className={`text-2xl text-center text-white animate-spin`}
                   />
@@ -119,26 +180,37 @@ const Contact = () => {
                 Give Us Feedback
               </h1>
 
-              <div className="relative">
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  setIsSending("feedback");
+                  createFeedback({
+                    message: (e.target as HTMLFormElement).feedback.value,
+                  });
+                }}
+                className="relative"
+              >
                 <Textarea
-                  //  rows={1}
-                  //ref={textareaRef}
-                  //maxRows={4}
-                  //autoFocus
-                  //onChange={handleInputChange}
-                  //value={message}
-
+                  name="feedback"
                   placeholder="Enter your question..."
-                  className="resize-none pr-12 text-base h-32 py-3 scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch "
+                  required
+                  className="resize-none text-black pr-12 text-base h-32 py-3 scrollbar-thumb-blue scrollbar-thumb-rounded scrollbar-track-blue-lighter scrollbar-w-2 scrolling-touch "
                 />
 
                 <Button
+                  type="submit"
                   className="absolute bottom-1.5 right-[8px] p-2 w-12"
                   aria-label="send message"
                 >
-                  <FiSend className="text-xl" />
+                  {isSending === "feedback" ? (
+                    <FiLoader
+                      className={`text-2xl text-center text-white animate-spin`}
+                    />
+                  ) : (
+                    <FiSend className="text-xl" />
+                  )}
                 </Button>
-              </div>
+              </form>
 
               <div className="flex my-4 w-2/3 lg:w-1/2">
                 <div className="flex flex-col">
@@ -173,22 +245,6 @@ const Contact = () => {
           </div>
         </div>
       </div>
-
-      {/*<div className="flex items-end justify-end fixed bottom-0 right-0 mb-4 mr-4 z-10">
-        <div>
-          <a
-            title="Buy me a pizza"
-            href="https://www.buymeacoffee.com/Dekartmc"
-            target="_blank"
-            className="block w-16 h-16 rounded-full transition-all shadow hover:shadow-lg transform hover:scale-110 hover:rotate-12"
-          >
-            <img
-              className="object-cover object-center w-full h-full rounded-full"
-              src="https://img.icons8.com/emoji/48/000000/pizza-emoji.png"
-            />
-          </a>
-        </div>
-      </div>*/}
     </>
   );
 };

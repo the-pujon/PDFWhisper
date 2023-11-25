@@ -29,7 +29,7 @@ export const contactRouter = router({
                 message
             }
         })
-        if (contactInfo) throw new TRPCError({ code: 'BAD_REQUEST' })
+        if (!contactInfo) throw new TRPCError({ code: 'BAD_REQUEST' })
         return contactInfo
     }),
 

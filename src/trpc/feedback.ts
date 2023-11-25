@@ -24,7 +24,7 @@ export const feedbackRouter = router({
         const feedback = await db.feedback.create({
             data: { message }
         })
-        if (feedback) throw new TRPCError({ code: 'BAD_REQUEST' })
+        if (!feedback) throw new TRPCError({ code: 'BAD_REQUEST' })
         return feedback
     }),
 
