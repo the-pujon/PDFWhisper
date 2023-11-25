@@ -7,6 +7,7 @@ import { INFINITE_QUERY_LIMIT } from '@/config/infinite-query';
 import { getUserSubscriptionPlan,stripe } from '@/lib/stripe';
 import { absoluteUrl } from '@/lib/utils';
 import { SubscriptionPlan } from '@/config/stripe';
+import { contactRouter } from './contact';
 
 export const appRouter = router({
     authCallback: publicProcedure.query(async () => {
@@ -327,7 +328,8 @@ export const appRouter = router({
     }),
     getFAQs: publicProcedure.query(async () => {
         return await db.fAQs.findMany()
-    })
+    }),
+    contactUs: contactRouter
 });
 
 
