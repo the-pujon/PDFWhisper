@@ -9,6 +9,7 @@ import {
   FaRegQuestionCircle,
   FaRegUserCircle,
 } from "react-icons/fa";
+import { MdOutlineContactMail, MdOutlineFeedback } from "react-icons/md";
 //import { FaRegCircleQuestion } from "react-icons/fa6";
 
 const DashBoardSidebar = () => {
@@ -83,6 +84,32 @@ const DashBoardSidebar = () => {
             >
               <FaRegUserCircle className="text-xl" />
               <span className="ml-2 text-sm font-medium">Manage Users</span>
+            </Link>
+
+            <Link
+              className={`flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-primary hover:text-white transition-all duration-300 ${
+                pathName == "/dashboard/manageContactInfo"
+                  ? "bg-primary text-white"
+                  : ""
+              }`}
+              href="/dashboard/manageContactInfo"
+            >
+              <MdOutlineContactMail className="text-xl" />
+              <span className="ml-2 text-sm font-medium">
+                Manage Contact Info
+              </span>
+            </Link>
+
+            <Link
+              className={`flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-primary hover:text-white transition-all duration-300 ${
+                pathName == "/dashboard/manageFeedback"
+                  ? "bg-primary text-white"
+                  : ""
+              }`}
+              href="/dashboard/manageFeedback"
+            >
+              <MdOutlineFeedback className="text-xl" />
+              <span className="ml-2 text-sm font-medium">Manage Feedback</span>
             </Link>
           </div>
         </div>

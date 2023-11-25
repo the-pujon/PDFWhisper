@@ -29,6 +29,7 @@ const ManageUsers = () => {
    * getting user data
    */
   const { data: users } = trpc.getUsers.useQuery();
+  console.log(users);
 
   /**
    * updating user
@@ -48,12 +49,6 @@ const ManageUsers = () => {
         ),
       });
     },
-    //onMutate({ id }) {
-    //  setUpdateUserRole(id);
-    //},
-    //onSettled() {
-    //  setUpdateUserRole(null);
-    //},
   });
 
   /**

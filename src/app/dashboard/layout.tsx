@@ -1,11 +1,19 @@
+"use client";
+
 import DashBoardSidebar from "@/components/DashBoardSidebar/DashBoardSidebar";
 import Link from "next/link";
 import React from "react";
+import { trpc } from "../_trpc/client";
 
 const DashLayout = ({ children }: { children: React.ReactNode }) => {
+  const { data: isAdmin } = trpc.getAdmin.useQuery();
+
+  console.log(isAdmin);
+
   return (
     <div className="flex justify-between w-full h-[95vh] divide-x">
-      <DashBoardSidebar />
+      {isAdmin?.role === "admin" ? <DashBoardSidebar /> : <></>}
+
       <>
         <div className="relative isolate">
           <div

@@ -20,16 +20,9 @@ const Dashboard = () => {
   >(null);
 
   const utils = trpc.useContext();
-
-const {data:users} = trpc.getUsers.useQuery()
-console.log(users)
-
-
   const { toast } = useToast();
 
   const { data: files, isLoading } = trpc.getUserFiles.useQuery();
-
-
 
   const { mutate: deleteFile } = trpc.deleteFile.useMutation({
     onSuccess: () => {

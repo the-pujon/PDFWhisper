@@ -234,6 +234,14 @@ export const appRouter = router({
         return users
 
     }),
+    getAdmin: privateProcedure.query(async ({ ctx }) => {
+        const { userId } = ctx;
+        return await db.user.findFirst({
+            where: {
+                id: userId
+            }
+        })
+    }),
     deleteUser: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx,input }) => {
         const { userId } = ctx
         const { id } = input
