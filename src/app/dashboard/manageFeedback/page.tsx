@@ -1,7 +1,12 @@
+import ManageFeedback from "@/components/ManageFeedback/ManageFeedback";
 import React from "react";
 
 const Page = () => {
-  return <div>Page</div>;
+  return (
+    <div>
+      <ManageFeedback />
+    </div>
+  );
 };
 
 export default Page;

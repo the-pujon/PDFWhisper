@@ -43,4 +43,22 @@ export const feedbackRouter = router({
             where: { id: input.id }
         })
     }),
+    /**
+    * deleting feedback
+    */
+    updateFeedback: privateProcedure.input(z.object({ id: z.string(),takeAction: z.enum(['PENDING','ONGOING','COMPLETED']) })).mutation(async ({ ctx,input }) => {
+        const { userId } = ctx
+        const admin = await db.user.findFirst({
+            where: {
+                id: userId
+            }
+        })
+        if (!admin) throw new TRPCError({ code: 'UNAUTHORIZED' })
+        return await db.feedback.update({
+            where: { id: input.id },
+            data: {
+                takeAction: input.takeAction
+            }
+        })
+    }),
 })

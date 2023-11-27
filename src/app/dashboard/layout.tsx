@@ -8,8 +8,6 @@ import { trpc } from "../_trpc/client";
 const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: isAdmin } = trpc.getAdmin.useQuery();
 
-  console.log(isAdmin);
-
   return (
     <div className="flex justify-between w-full h-[95vh] divide-x">
       {isAdmin?.role === "admin" ? <DashBoardSidebar /> : <></>}
