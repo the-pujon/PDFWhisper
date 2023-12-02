@@ -45,7 +45,7 @@ const ManageFAQs = () => {
   };
 
   return (
-    <div className="flex w-full h-screen divide-x">
+    <div className="flex flex-col md:flex-row w-full h-screen divide-x ">
       <div className="flex-1">
         <div>
           <AddFAQs />

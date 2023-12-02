@@ -339,7 +339,23 @@ export const appRouter = router({
         return await db.fAQs.findMany()
     }),
     contactUs: contactRouter,
-    feedbackInfo: feedbackRouter
+    feedbackInfo: feedbackRouter,
+    getLatestMsg: privateProcedure.input(z.object({ id: z.string() })).query(async ({ ctx,input }) => {
+        const { userId } = ctx;
+
+        const messages = await db.message.findMany({
+            //take: limit + 1,
+            where: {
+                fileId: input.id
+            },
+            orderBy: {
+                createdAt: 'desc'
+            },
+
+        })
+
+        return messages
+    })
 });
 
 

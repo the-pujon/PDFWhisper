@@ -38,12 +38,12 @@ const ManageFeedback = () => {
   const { toast } = useToast();
 
   /**
-   * getting contact information
+   * getting feedback
    */
   const { data: feedbacks } = trpc.feedbackInfo.getAllFeedback.useQuery();
 
   /**
-   * deleting user
+   * updating action in feedback
    */
   const { mutate: updateFeedback } =
     trpc.feedbackInfo.updateFeedback.useMutation({
@@ -64,7 +64,7 @@ const ManageFeedback = () => {
     });
 
   /**
-   * deleting user
+   * delete feedback
    */
   const { mutate: deleteFeedback } =
     trpc.feedbackInfo.deleteFeedback.useMutation({
@@ -78,7 +78,7 @@ const ManageFeedback = () => {
     });
 
   return (
-    <div>
+    <div className=" ">
       <Table>
         <TableHeader>
           <TableRow>

@@ -59,7 +59,7 @@ const AddFAQs = () => {
             id="question"
             name="question"
             placeholder="Question"
-            className="w-full"
+            className="w-full bg-transparent border border-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0"
           />
         </div>{" "}
         <div className="grid w-full gap-1.5">
@@ -70,6 +70,7 @@ const AddFAQs = () => {
             placeholder="Type your message here."
             id="answer"
             name="answer"
+            className=" bg-transparent border border-gray-500 h-36 appearance-none outline-none focus-visible:ring-0 focus-visible:ring-offset-0"
           />
         </div>
         <Button

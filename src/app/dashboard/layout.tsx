@@ -9,11 +9,13 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: isAdmin } = trpc.getAdmin.useQuery();
 
   return (
-    <div className="flex justify-between w-full h-[95vh] divide-x">
-      {isAdmin?.role === "admin" ? <DashBoardSidebar /> : <></>}
+    <div className="flex justify-between w-full  divide-x">
+      <div className="">
+        {isAdmin?.role === "admin" ? <DashBoardSidebar /> : <></>}
+      </div>
 
       <>
-        <div className="relative isolate">
+        <div className="relative isolate -z-10">
           <div
             aria-hidden="true"
             className="pointer-events-none fixed w-full -translate-x-52 -z-10 overflow-hidden blur-3xl sm:-top-80"
@@ -35,7 +37,7 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </>
-      <div className="w-full">{children}</div>
+      <div className="flex-1 w-full">{children}</div>
     </div>
   );
 };

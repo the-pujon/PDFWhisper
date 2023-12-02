@@ -84,10 +84,10 @@ const Contact = () => {
       try {
         setIsSending("contact");
         await emailjs.sendForm(
-          "service_k5qob22",
-          "template_qlwnb2y",
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
           form.current,
-          "RnEfwGQwiK81lV9K2"
+          process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!
         );
 
         createContact({
@@ -104,6 +104,9 @@ const Contact = () => {
         variant: "destructive",
         title: "Please fill all fields",
       });
+    }
+    if (form.current) {
+      form.current.reset();
     }
   };
   return (
@@ -187,6 +190,7 @@ const Contact = () => {
                   createFeedback({
                     message: (e.target as HTMLFormElement).feedback.value,
                   });
+                  (e.target as HTMLFormElement).reset();
                 }}
                 className="relative"
               >

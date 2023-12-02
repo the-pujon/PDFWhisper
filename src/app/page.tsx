@@ -12,35 +12,55 @@ export default function Home() {
   return (
     <main>
       <WidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center">
-        <div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 bg-white animate-bounce px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
-          <p className="text-sm font-semibold text-gray-700">
-            PDFWhisper is now public
-          </p>
+        <div className="flex items-center gap-3">
+          <div>
+            {/*<div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 bg-white animate-bounce px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
+              <p className="text-sm font-semibold text-gray-700">
+                PDFWhisper is now public
+              </p>
+            </div>*/}
+            <h1 className=" max-w-4xl text-4xl md:text-6xl lg:text-7xl font-bold text-start">
+              Unlock the Power of Conversational
+              <span className="text-primary"> PDFs!</span>
+            </h1>
+            <p className="mt-5 max-w-prose text-secondary-foreground/70 sm:text-xl">
+              <span className="text-primary font-normal">PDFWhisper </span>
+              Facilitating Dynamic Conversations Inside Your PDFs...
+            </p>
+            <Link
+              className={buttonVariants({
+                size: "lg",
+                className:
+                  "text-xl mt-10 py-6 bg-foreground hover:animate-out hover:repeat-1",
+              })}
+              href={`/dashboard`}
+              target="_blank"
+            >
+              Get Start <FaArrowRight className="ml-2 " />
+            </Link>
+          </div>
+          <div>
+            <div className="mx-auto w-[60rem] max-w-6xl px-6 lg:px-8 z-20">
+              <div className=" flow-root ">
+                <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                  <Image
+                    src="/dashboard-preview.jpg"
+                    alt="product preview"
+                    width={1364}
+                    height={866}
+                    quality={100}
+                    className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <h1 className=" max-w-4xl text-4xl md:text-6xl lg:text-7xl font-bold text-center">
-          Unlock the Power of Conversational
-          <span className="text-primary"> PDFs!</span>
-        </h1>
-        <p className="mt-5 max-w-prose text-secondary-foreground/70 sm:text-2xl">
-          <span className="text-primary font-normal">PDFWhisper </span>
-          Facilitating Dynamic Conversations Inside Your PDFs...
-        </p>
-        <Link
-          className={buttonVariants({
-            size: "lg",
-            className:
-              "text-base mt-10 py-6 bg-foreground hover:animate-out hover:repeat-1",
-          })}
-          href={`/dashboard`}
-          target="_blank"
-        >
-          Get Start <FaArrowRight className="ml-2 " />
-        </Link>
       </WidthWrapper>
 
       {/* Background and banner image */}
       <div>
-        <div className="relative isolate">
+        <div className="relative isolate  -z-10">
           <div
             aria-hidden="true"
             className="pointer-events-none fixed w-full -translate-x-52 -z-10 overflow-hidden blur-3xl sm:-top-80"
@@ -51,7 +71,7 @@ export default function Home() {
             />
           </div>
 
-          <div>
+          {/*<div>
             <div className="mx-auto max-w-6xl px-6 lg:px-8">
               <div className="mt-16 flow-root sm:mt-24">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
@@ -66,7 +86,7 @@ export default function Home() {
                 </div>
               </div>
             </div>
-          </div>
+          </div>*/}
 
           <div
             aria-hidden="true"
