@@ -14,9 +14,9 @@ const ShowFAQs = () => {
   const { data: FAQs, isLoading } = trpc.getFAQs.useQuery();
 
   return (
-    <div className="">
-      <div className="flex items-center min-h-[20rem]">
-        <div className="w-full text-5xl font-bold">
+    <div className="min-h-[20rem]">
+      <div className="flex flex-col sm:flex-row justify-center sm:justify-between items-center min-h-[20rem] gap-3 sm:gap-0 ">
+        <div className="w-full text-center sm:text-start text-5xl font-bold">
           The Alcove of Common <span className="text-primary">PDFWhisper</span>{" "}
           Queries
         </div>

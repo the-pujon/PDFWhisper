@@ -11,27 +11,22 @@ import { HiChatAlt2 } from "react-icons/hi";
 export default function Home() {
   return (
     <main>
+      {/* Banner */}
       <WidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center">
-        <div className="flex items-center gap-3">
-          <div>
-            {/*<div className="mx-auto mb-4 flex max-w-fit items-center justify-center space-x-2 overflow-hidden rounded-full border-gray-200 bg-white animate-bounce px-7 py-2 shadow-md backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50">
-              <p className="text-sm font-semibold text-gray-700">
-                PDFWhisper is now public
-              </p>
-            </div>*/}
-            <h1 className=" max-w-4xl text-4xl md:text-6xl lg:text-7xl font-bold text-start">
+        <div className="flex flex-col justify-center md:flex-row items-center gap-7 sm:gap-3">
+          <div className="flex items-center justify-center md:block flex-col gap-2">
+            <h1 className=" max-w-4xl text-center text-4xl md:text-6xl lg:text-7xl font-bold md:text-start">
               Unlock the Power of Conversational
               <span className="text-primary"> PDFs!</span>
             </h1>
-            <p className="mt-5 max-w-prose text-secondary-foreground/70 sm:text-xl">
+            <p className="mt-5 max-w-prose text-center md:text-start text-secondary-foreground/70 text-sm md:text-xl">
               <span className="text-primary font-normal">PDFWhisper </span>
               Facilitating Dynamic Conversations Inside Your PDFs...
             </p>
             <Link
               className={buttonVariants({
-                size: "lg",
                 className:
-                  "text-xl mt-10 py-6 bg-foreground hover:animate-out hover:repeat-1",
+                  "text-sm md:text-xl mt-3 sm:mt-10 py-0 md:py-6 bg-foreground hover:animate-out hover:repeat-1",
               })}
               href={`/dashboard`}
               target="_blank"
@@ -40,7 +35,7 @@ export default function Home() {
             </Link>
           </div>
           <div>
-            <div className="mx-auto w-[60rem] max-w-6xl px-6 lg:px-8 z-20">
+            <div className="mx-auto w-full md:w-[60rem] max-w-6xl px-6 lg:px-8 z-20">
               <div className=" flow-root ">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                   <Image
@@ -70,24 +65,6 @@ export default function Home() {
               className="relative fixed left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem]  -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-primary to-transparent opacity-50 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
             />
           </div>
-
-          {/*<div>
-            <div className="mx-auto max-w-6xl px-6 lg:px-8">
-              <div className="mt-16 flow-root sm:mt-24">
-                <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
-                  <Image
-                    src="/dashboard-preview.jpg"
-                    alt="product preview"
-                    width={1364}
-                    height={866}
-                    quality={100}
-                    className="rounded-md bg-white p-2 sm:p-8 md:p-20 shadow-2xl ring-1 ring-gray-900/10"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>*/}
-
           <div
             aria-hidden="true"
             className="pointer-events-none fixed w-full  translate-y-[90vh] translate-x-14  -z-10   overflow-hidden blur-3xl sm:-top-80"
@@ -103,10 +80,10 @@ export default function Home() {
       <WidthWrapper className="mx-auto mb-32 mt-32   sm:mt-56">
         <div className="mb-12 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
-            <h2 className="mt-2 font-bold text-4xl text-gray-900 sm:text-5xl">
+            <h2 className="mt-2 font-bold text-4xl text-gray-900 sm:text-5xl text-center ">
               Start chatting in minutes
             </h2>
-            <p className="mt-4 text-lg text-gray-600">
+            <p className="mt-4 text-sm sm:text-lg text-gray-600 text-center ">
               Chatting to your PDF files has never been easier than with
               PDFWhisper.
             </p>
@@ -114,9 +91,9 @@ export default function Home() {
         </div>
 
         {/* steps */}
-        <div className="flex w-full divide-x-2 mx-auto border-y-2">
+        <div className="flex flex-col sm:flex-row w-full divide-y-2 sm:divide-x-2 mx-auto border-y-2">
           {/* step1 */}
-          <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative ">
+          <div className="flex flex-col items-start justify-center py-16 px-6 sm:px-[3rem] relative ">
             <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
               1
             </span>
@@ -135,12 +112,12 @@ export default function Home() {
               </Link>
               .
             </p>
-            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full">
+            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full hidden sm:block">
               <FaArrowRight />
             </div>
           </div>
           {/* step2 */}
-          <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative ">
+          <div className="flex flex-col items-start justify-center py-16 px-6 sm:px-[3rem] relative ">
             <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
               2
             </span>
@@ -152,12 +129,12 @@ export default function Home() {
               We&apos;ll process your file and make it ready for you to chat
               with. .
             </p>
-            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full">
+            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full hidden sm:block">
               <FaArrowRight />
             </div>
-          </div>{" "}
+          </div>
           {/* step3 */}
-          <div className="flex flex-col items-start justify-center py-16 px-[3rem] relative">
+          <div className="flex flex-col items-start justify-center py-16 px-6 sm:px-[3rem] relative">
             <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
               3
             </span>

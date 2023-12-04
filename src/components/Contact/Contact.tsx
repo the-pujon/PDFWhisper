@@ -110,8 +110,8 @@ const Contact = () => {
     }
   };
   return (
-    <>
-      <div className="flex justify-center items-center h-screen">
+    <div className="min-h-[100vh]">
+      <div className="flex justify-center items-center min-h-screen">
         <div className="container mx-auto my-4 px-4 lg:px-20">
           {/* contact */}
           <form
@@ -249,7 +249,7 @@ const Contact = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
