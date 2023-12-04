@@ -3,7 +3,7 @@ export const SubscriptionPlan = [
         name: 'Free',
         slug: 'free',
         quota: 10,
-        PagePerPdf: 2,
+        pagesPerPdf: 2,
         price: {
             amount: 0,
             priceIds: {
@@ -16,7 +16,7 @@ export const SubscriptionPlan = [
         name: 'Pro',
         slug: 'pro',
         quota: 20,
-        PagePerPdf: 4,
+        pagesPerPdf: 4,
         price: {
             amount: 50,
             priceIds: {
@@ -25,19 +25,19 @@ export const SubscriptionPlan = [
             }
         }
     },
-    {
-        name: 'Custom',
-        slug: 'custom',
-        quota: 'custom',
-        PagePerPdf: 'custom',
-        price: {
-            amount: 'custom',
-            priceIds: {
-                test: process.env.STRIPE_PRICE_API_ID,
-                production: ''
-            }
-        }
-    }
+    //{
+    //    name: 'Custom',
+    //    slug: 'custom',
+    //    quota: 'custom',
+    //    pagesPerPdf: 'custom',
+    //    price: {
+    //        amount: 'custom',
+    //        priceIds: {
+    //            test: process.env.STRIPE_PRICE_API_ID,
+    //            production: ''
+    //        }
+    //    }
+    //}
 
 
 ]

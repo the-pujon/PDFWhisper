@@ -1,6 +1,7 @@
 import Dashboard from "@/components/Dashboard/Dashboard";
 import WidthWrapper from "@/components/WidthWrapper/WidthWrapper";
 import { db } from "@/db";
+import { getUserSubscriptionPlan } from "@/lib/stripe";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import Link from "next/link";
 import { redirect } from "next/navigation";
@@ -19,6 +20,8 @@ const Page = async () => {
   });
   if (!dbUser) redirect("/auth-callback?origin=dashboard");
 
+  const subscriptionPlan = await getUserSubscriptionPlan();
+
   return (
     <div>
       <div className="flex justify-between w-full h-[95vh] divide-x">
@@ -28,7 +31,7 @@ const Page = async () => {
 
         {/*<!-- Component Start -->*/}
 
-        <Dashboard />
+        <Dashboard subscriptionPlan={subscriptionPlan} />
       </div>
 
       {/* background */}

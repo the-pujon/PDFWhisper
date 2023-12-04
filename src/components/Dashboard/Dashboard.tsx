@@ -14,8 +14,13 @@ import { useToast } from "../ui/use-toast";
 import { INFINITE_QUERY_LIMIT } from "@/config/infinite-query";
 import LatestMsg from "../LatestMsg/LatestMsg";
 import { MdOutlineUpdate } from "react-icons/md";
+import { getUserSubscriptionPlan } from "@/lib/stripe";
 
-const Dashboard = () => {
+interface DashboardProps {
+  subscriptionPlan: Awaited<ReturnType<typeof getUserSubscriptionPlan>>;
+}
+
+const Dashboard = ({ subscriptionPlan }: DashboardProps) => {
   //const { data: files,isLoading } = trpc.getUserFiles.useQuery()
 
   const [uploadedFileId, setUploadedFileId] = useState<string | null>(null);
@@ -50,7 +55,7 @@ const Dashboard = () => {
       <div className="mt-8 w-full flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0">
         <h1 className="mb-3 font-bold text-5xl text-gray-900">My PDF Files</h1>
 
-        <UploadButton />
+        <UploadButton isSubscribed={subscriptionPlan.isSubscribed} />
       </div>
 
       {/* display all user files */}

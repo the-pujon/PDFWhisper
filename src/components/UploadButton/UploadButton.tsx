@@ -1,28 +1,29 @@
-import React,{ useState } from 'react'
-import { Button } from '../ui/button'
-import { Dialog,DialogContent,DialogTrigger } from '../ui/dialog'
-import UploadPDF from '../UploadPDF/UploadPDF'
+import React, { useState } from "react";
+import { Button } from "../ui/button";
+import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
+import UploadPDF from "../UploadPDF/UploadPDF";
 
-const UploadButton = () => {
-    const [isOpen,setIsOpen] = useState<boolean>(false)
+const UploadButton = ({ isSubscribed }: { isSubscribed: boolean }) => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-    return (
-        <Dialog open={isOpen}
-            onOpenChange={(v) => {
-                if (!v) {
-                    setIsOpen(v)
-                }
-            }} >
-            <DialogTrigger onClick={() => setIsOpen(true)} asChild>
-                <Button  >Upload</Button>
-            </DialogTrigger>
+  return (
+    <Dialog
+      open={isOpen}
+      onOpenChange={(v) => {
+        if (!v) {
+          setIsOpen(v);
+        }
+      }}
+    >
+      <DialogTrigger onClick={() => setIsOpen(true)} asChild>
+        <Button>Upload</Button>
+      </DialogTrigger>
 
-            <DialogContent>
-                <UploadPDF />
-            </DialogContent>
+      <DialogContent>
+        <UploadPDF isSubscribed={isSubscribed} />
+      </DialogContent>
+    </Dialog>
+  );
+};
 
-        </Dialog>
-    )
-}
-
-export default UploadButton
+export default UploadButton;
