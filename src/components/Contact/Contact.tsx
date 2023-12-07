@@ -64,6 +64,9 @@ const Contact = () => {
       },
     });
 
+  /**
+   * Sending email
+   */
   const sendEmail = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -72,6 +75,7 @@ const Contact = () => {
       return;
     }
 
+    //getting all contact data from form
     const formData = new FormData(form.current);
     const emailValue = formData.get("user_email");
     const firstName = formData.get("user_name");
@@ -109,6 +113,7 @@ const Contact = () => {
       form.current.reset();
     }
   };
+
   return (
     <div className="min-h-[100vh]">
       <div className="flex justify-center items-center min-h-screen">
@@ -123,6 +128,7 @@ const Contact = () => {
               <h1 className="font-bold uppercase text-5xl">Connect with us</h1>
             </div>
             <div className="grid grid-cols-1 gap-5 md:grid-cols-2 mt-5">
+              {/* name */}
               <input
                 className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="text"
@@ -130,6 +136,7 @@ const Contact = () => {
                 placeholder="First Name*"
                 required
               />
+              {/* last name */}
               <input
                 className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="text"
@@ -137,6 +144,7 @@ const Contact = () => {
                 placeholder="Last Name*"
                 required
               />
+              {/* email */}
               <input
                 className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="email"
@@ -144,6 +152,7 @@ const Contact = () => {
                 placeholder="Email*"
                 required
               />
+              {/* phone */}
               <input
                 className="w-full bg-gray-100 text-gray-900 mt-2 p-3 rounded-lg focus:outline-none focus:shadow-outline"
                 type="number"
@@ -153,6 +162,7 @@ const Contact = () => {
               />
             </div>
             <div className="my-4">
+              {/* message */}
               <textarea
                 placeholder="Message*"
                 required
@@ -177,6 +187,7 @@ const Contact = () => {
             </div>
           </form>
 
+          {/* feedback */}
           <div className="w-full lg:-mt-96 lg:w-2/6 px-8 py-12 ml-auto bg-primary rounded-2xl">
             <div className="flex flex-col text-white">
               <h1 className="font-bold uppercase text-4xl my-4">

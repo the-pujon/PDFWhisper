@@ -11,7 +11,7 @@ import { trpc } from "@/app/_trpc/client";
 import { FiLoader } from "react-icons/fi";
 
 const ShowFAQs = () => {
-  const { data: FAQs, isLoading } = trpc.getFAQs.useQuery();
+  const { data: FAQs, isLoading } = trpc.getFAQs.useQuery(); //getting all faq from db
 
   return (
     <div className="min-h-[20rem]">
@@ -27,7 +27,7 @@ const ShowFAQs = () => {
             />
           ) : (
             <>
-              {FAQs?.map((faq) => (
+              {FAQs?.slice(0, 6).map((faq) => (
                 <Accordion
                   type="single"
                   collapsible

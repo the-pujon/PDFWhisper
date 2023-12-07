@@ -24,7 +24,7 @@ const Navbar = async () => {
           <Link href="/" className="flex z-40 font-semibold">
             <span>PDFWhishper.</span>
           </Link>
-
+          {/* mobile responsive navbar component */}
           <MobileNav
             isSubscribed={subscriptionPlan?.isSubscribed}
             isAuth={!!user}
@@ -77,6 +77,7 @@ const Navbar = async () => {
                   Dashboard
                 </Link>
 
+                {/* showing about user */}
                 <UserAccountNav
                   isSubscribed={subscriptionPlan?.isSubscribed}
                   name={

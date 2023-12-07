@@ -19,11 +19,11 @@ const ManageFAQs = () => {
     id: string;
   } | null>(null);
 
-  const { data: getFAQs } = trpc.getFAQs.useQuery();
+  const { data: getFAQs } = trpc.faq.getFAQs.useQuery();
 
-  const { mutate: FAQDelete } = trpc.deleteFAQs.useMutation({
+  const { mutate: FAQDelete } = trpc.faq.deleteFAQs.useMutation({
     onSuccess: () => {
-      utils.getFAQs.invalidate();
+      utils.faq.getFAQs.invalidate();
       toast({
         variant: "destructive",
         title: `FAQ Deleted`,
@@ -40,15 +40,18 @@ const ManageFAQs = () => {
     id: string;
     answer: string;
   }) => {
-    utils.getFAQs.invalidate();
+    utils.faq.getFAQs.invalidate();
     setUpdatableFAQ({ question: question, answer: answer, id: id });
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-screen divide-x ">
+    <div className="flex flex-col md:flex-row w-full h-screen divide-x min-h-screen overflow-auto">
       <div className="flex-1">
         <div>
-          <AddFAQs />
+          <div className={`${updatableFAQ ? "hidden" : "block"} sm:block`}>
+            <AddFAQs />
+          </div>
+
           {updatableFAQ && (
             <UpdateFAQ
               setUpdatableFAQ={setUpdatableFAQ}

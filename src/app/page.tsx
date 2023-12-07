@@ -12,7 +12,7 @@ export default function Home() {
   return (
     <main>
       {/* Banner */}
-      <WidthWrapper className="mb-12 mt-28 sm:mt-40 flex flex-col items-center justify-center">
+      <WidthWrapper className="mb-12 mt-28 sm:mt-52 flex flex-col items-center justify-center">
         <div className="flex flex-col justify-center md:flex-row items-center gap-7 sm:gap-3">
           <div className="flex items-center justify-center md:block flex-col gap-2">
             <h1 className=" max-w-4xl text-center text-4xl md:text-6xl lg:text-7xl font-bold md:text-start">
@@ -53,7 +53,7 @@ export default function Home() {
         </div>
       </WidthWrapper>
 
-      {/* Background and banner image */}
+      {/* Background */}
       <div>
         <div className="relative isolate  -z-10">
           <div
@@ -77,6 +77,7 @@ export default function Home() {
         </div>
       </div>
 
+      {/* steps */}
       <WidthWrapper className="mx-auto mb-32 mt-32   sm:mt-56">
         <div className="mb-12 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
@@ -93,17 +94,18 @@ export default function Home() {
         {/* steps */}
         <div className="flex flex-col sm:flex-row w-full divide-y-2 sm:divide-x-2 mx-auto border-y-2">
           {/* step1 */}
-          <div className="flex flex-col items-start justify-center py-16 px-6 sm:px-[3rem] relative ">
-            <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
+          <div className="flex flex-col items-start justify-center py-10 sm:py-16 px-6 sm:px-[3rem] relative ">
+            <span className="flex text-[10rem] sm:text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
               1
             </span>
             <span>
-              <GiArchiveRegister className="text-4xl text-primary" />
+              <GiArchiveRegister className="text-2xl sm:text-4xl text-primary" />
             </span>
-            <p className="text-primary text-2xl ">Sign up for an account</p>
+            <p className="text-primary text-xl  sm:text-2xl ">
+              Sign up for an account
+            </p>
             <p>
-              {" "}
-              Either starting out with a free plan or choose our{" "}
+              Either starting out with a free plan or choose our
               <Link
                 href="/pricing"
                 className="text-blue-700 underline underline-offset-2"
@@ -117,8 +119,8 @@ export default function Home() {
             </div>
           </div>
           {/* step2 */}
-          <div className="flex flex-col items-start justify-center py-16 px-6 sm:px-[3rem] relative ">
-            <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
+          <div className="flex flex-col items-start justify-center py-10 sm:py-16 px-6 sm:px-[3rem] relative ">
+            <span className="flex text-[10rem] sm:text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
               2
             </span>
             <span>
@@ -134,8 +136,8 @@ export default function Home() {
             </div>
           </div>
           {/* step3 */}
-          <div className="flex flex-col items-start justify-center py-16 px-6 sm:px-[3rem] relative">
-            <span className="flex text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
+          <div className="flex flex-col items-start justify-center py-10 sm:py-16 px-6 sm:px-[3rem] relative">
+            <span className="flex text-[10rem] sm:text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
               3
             </span>
             <span>
@@ -165,10 +167,12 @@ export default function Home() {
         </div>
       </WidthWrapper>
 
+      {/* Faq */}
       <WidthWrapper>
         <ShowFAQs />
       </WidthWrapper>
 
+      {/* Contact */}
       <WidthWrapper>
         <Contact />
       </WidthWrapper>

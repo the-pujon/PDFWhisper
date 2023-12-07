@@ -23,8 +23,9 @@ const MobileNav = ({
   imageUrl: string;
   isSubscribed: boolean;
 }) => {
-  const [isOpen, setOpen] = useState<boolean>(false);
+  const [isOpen, setOpen] = useState<boolean>(false); // for controlling the mobile menu's open/close state
 
+  //for toggle the mobile menu's open/close state
   const toggleOpen = () => setOpen((prev) => !prev);
 
   const pathname = usePathname();
@@ -33,6 +34,7 @@ const MobileNav = ({
     if (isOpen) toggleOpen();
   }, [pathname]);
 
+  // for close the mobile menu when the current page is selected
   const closeOnCurrent = (href: string) => {
     if (pathname === href) {
       toggleOpen();

@@ -17,7 +17,7 @@ const DashBoardSidebar = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center w-16 h-[100vh] z-10 overflow-hidden text-gray-700  bg-white/30 backdrop-blur-2xl sm:hidden">
+      <div className="flex mt-16 sm:mt-8 flex-col items-center w-16 h-full min-h-screen z-10 overflow-auto text-gray-700  bg-white/30 backdrop-blur-2xl sm:hidden border-r">
         <div className="flex flex-col items-center mt-3">
           <Link
             className={`flex items-center w-full h-12 px-3 mt-2 rounded hover:bg-primary hover:text-white transition-all duration-300 ${
@@ -70,17 +70,10 @@ const DashBoardSidebar = () => {
             <MdOutlineFeedback className="text-xl" />
           </Link>
         </div>
-
-        <Link
-          className="flex items-center justify-center w-16 h-16 mt-auto bg-gray-200 hover:bg-gray-300"
-          href="#"
-        >
-          A
-        </Link>
       </div>
 
       {/* Big screen */}
-      <div className="md:flex flex-col items-center w-60  h-[100vh] overflow-hidden rounded divide-x hidden  bg-white/30 backdrop-blur-2xl ">
+      <div className="md:flex mt-16 sm:mt-8 flex-col items-center w-60  h-full min-h-screen rounded divide-x hidden  bg-white/30 backdrop-blur-2xl border-r">
         <div className="w-full ">
           <div className="flex flex-col items-center w-full ">
             <Link
@@ -144,12 +137,6 @@ const DashBoardSidebar = () => {
             </Link>
           </div>
         </div>
-        <a
-          className="flex items-center justify-center w-full h-16 mt-auto bg-gray-200 hover:bg-gray-300"
-          href="#"
-        >
-          <span className="ml-2 text-sm font-medium">Account</span>
-        </a>
       </div>
     </>
   );

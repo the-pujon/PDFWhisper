@@ -1,7 +1,6 @@
 "use client";
 
 import DashBoardSidebar from "@/components/DashBoardSidebar/DashBoardSidebar";
-import Link from "next/link";
 import React from "react";
 import { trpc } from "../_trpc/client";
 
@@ -9,7 +8,7 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: isAdmin } = trpc.getAdmin.useQuery();
 
   return (
-    <div className="flex justify-between w-full  divide-x">
+    <div className="flex justify-between w-full ">
       <div className="">
         {isAdmin?.role === "admin" ? <DashBoardSidebar /> : <></>}
       </div>
@@ -37,7 +36,9 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
           </div>
         </div>
       </>
-      <div className="flex-1 w-full">{children}</div>
+      <div className="flex-1 w-full mt-16 sm:mt-10 min-h-screen overflow-auto">
+        {children}
+      </div>
     </div>
   );
 };

@@ -51,16 +51,18 @@ const Dashboard = ({ subscriptionPlan }: DashboardProps) => {
   });
 
   return (
-    <main className="mx-auto w-full max-w-7xl md:p-10">
-      <div className="mt-8 w-full flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0">
-        <h1 className="mb-3 font-bold text-5xl text-gray-900">My PDF Files</h1>
+    <main className="mx-auto p-4 w-full max-w-7xl min-h-screen overflow-auto md:p-10">
+      <div className=" sm:mt-8 w-full flex flex-col items-start justify-between gap-4 sm:border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0">
+        <h1 className="mb-3 font-bold text-3xl sm:text-5xl text-gray-900">
+          My PDF Files
+        </h1>
 
         <UploadButton isSubscribed={subscriptionPlan.isSubscribed} />
       </div>
 
       {/* display all user files */}
       {files && files?.length !== 0 ? (
-        <ul className="mt-8 grid grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-8 pb-10 grid grid-cols-1 gap-6 divide-y divide-zinc-200 md:grid-cols-2 lg:grid-cols-3">
           {files
             .sort(
               (a, b) =>

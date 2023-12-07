@@ -23,9 +23,9 @@ const UpdateFAQ = ({ setUpdatableFAQ, updatableFAQ }: UpdateFAQProps) => {
   const { toast } = useToast();
   const utils = trpc.useContext();
 
-  const { mutate: FAQUpdate } = trpc.updateFAQs.useMutation({
+  const { mutate: FAQUpdate } = trpc.faq.updateFAQs.useMutation({
     onSuccess: () => {
-      utils.getFAQs.invalidate();
+      utils.faq.getFAQs.invalidate();
       toast({
         variant: "default",
         action: (

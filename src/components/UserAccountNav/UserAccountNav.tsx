@@ -28,8 +28,6 @@ const UserAccountNav = async ({
   name,
   isSubscribed,
 }: UserAccountNavProps) => {
-  const subscriptionPlan = await getUserSubscriptionPlan();
-
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild className="overflow-visible">
