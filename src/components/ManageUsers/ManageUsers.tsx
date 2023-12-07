@@ -28,15 +28,15 @@ const ManageUsers = () => {
   /**
    * getting user data
    */
-  const { data: users } = trpc.getUsers.useQuery();
+  const { data: users } = trpc.user.getUsers.useQuery();
   console.log(users);
 
   /**
    * updating user
    */
-  const { mutate: updateRole } = trpc.updateUserRole.useMutation({
+  const { mutate: updateRole } = trpc.user.updateUserRole.useMutation({
     onSuccess: () => {
-      utils.getUsers.invalidate();
+      utils.user.getUsers.invalidate();
       toast({
         variant: "default",
         action: (
@@ -54,9 +54,9 @@ const ManageUsers = () => {
   /**
    * deleting user
    */
-  const { mutate: deleteUser } = trpc.deleteUser.useMutation({
+  const { mutate: deleteUser } = trpc.user.deleteUser.useMutation({
     onSuccess: () => {
-      utils.getUsers.invalidate();
+      utils.user.getUsers.invalidate();
       toast({
         variant: "destructive",
         title: "Successfully deleted",

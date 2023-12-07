@@ -11,7 +11,7 @@ import { trpc } from "@/app/_trpc/client";
 import { FiLoader } from "react-icons/fi";
 
 const ShowFAQs = () => {
-  const { data: FAQs, isLoading } = trpc.getFAQs.useQuery(); //getting all faq from db
+  const { data: FAQs, isLoading } = trpc.faq.getFAQs.useQuery(); //getting all faq from db
 
   return (
     <div className="min-h-[20rem]">

@@ -10,6 +10,7 @@ import { SubscriptionPlan } from '@/config/stripe';
 import { contactRouter } from './contact';
 import { feedbackRouter } from './feedback';
 import { faqRouter } from './faq';
+import { userRouter } from './users';
 
 export const appRouter = router({
     authCallback: publicProcedure.query(async () => {
@@ -203,66 +204,7 @@ export const appRouter = router({
             return { url: stripeSession.url }
         }
     ),
-    updateUserRole: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ input }) => {
-        const { id } = input
-
-        const file = await db.user.update({
-            data: {
-                role: 'admin'
-            },
-            where: {
-                id: id
-            }
-        })
-
-        if (!file) throw new TRPCError({ code: 'NOT_FOUND' })
-
-        return file
-    }),
-    getUsers: privateProcedure.query(async ({ ctx }) => {
-        const { userId } = ctx
-
-        const admin = await db.user.findFirst({
-            where: {
-                id: userId
-            }
-        })
-
-        if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
-
-        const users = await db.user.findMany()
-
-        return users
-
-    }),
-    getAdmin: privateProcedure.query(async ({ ctx }) => {
-        const { userId } = ctx;
-        return await db.user.findFirst({
-            where: {
-                id: userId
-            }
-        })
-    }),
-    deleteUser: privateProcedure.input(z.object({ id: z.string() })).mutation(async ({ ctx,input }) => {
-        const { userId } = ctx
-        const { id } = input
-
-        const admin = await db.user.findFirst({
-            where: {
-                id: userId
-            }
-        })
-
-        if (admin?.role !== 'admin') throw new TRPCError({ code: 'UNAUTHORIZED' })
-
-        return await db.user.delete({
-            where: {
-                id: id
-            }
-        })
-
-
-    }),
+    user: userRouter,
     faq: faqRouter,
     contactUs: contactRouter,
     feedbackInfo: feedbackRouter,
@@ -270,9 +212,9 @@ export const appRouter = router({
         const { userId } = ctx;
 
         const messages = await db.message.findMany({
-            //take: limit + 1,
             where: {
-                fileId: input.id
+                fileId: input.id,
+                userId: userId
             },
             orderBy: {
                 createdAt: 'desc'

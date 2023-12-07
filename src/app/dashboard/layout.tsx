@@ -5,7 +5,7 @@ import React from "react";
 import { trpc } from "../_trpc/client";
 
 const DashLayout = ({ children }: { children: React.ReactNode }) => {
-  const { data: isAdmin } = trpc.getAdmin.useQuery();
+  const { data: isAdmin } = trpc.user.getAdmin.useQuery();
 
   return (
     <div className="flex justify-between w-full ">
