@@ -65,7 +65,9 @@ const ManageUsers = () => {
   });
 
   return (
-    <Table>
+    <div className='mt-0 sm:mt-8' >
+       <div className="text-4xl sm:text-5xl text-black font-bold mb-5 pl-2">Manage Users</div>
+         <Table >
       <TableHeader>
         <TableRow>
           <TableHead className="">No</TableHead>
@@ -142,6 +144,8 @@ const ManageUsers = () => {
         ))}
       </TableBody>
     </Table>
+    </div>
+
   );
 };
 

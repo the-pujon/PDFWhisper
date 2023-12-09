@@ -47,7 +47,8 @@ const ManageContactInfo = () => {
     });
 
   return (
-    <div>
+    <div className='mt-0 sm:mt-8' >
+    <div className="text-4xl sm:text-5xl text-black font-bold mb-5 pl-2">Manage Contact</div>
       <Table>
         <TableHeader>
           <TableRow>

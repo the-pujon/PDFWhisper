@@ -15,6 +15,8 @@ import { MdOutlineContactMail, MdOutlineFeedback } from "react-icons/md";
 const DashBoardSidebar = () => {
   const pathName = usePathname();
 
+  console.log(pathName === `/dashboard/[fileid]`)
+
   return (
     <>
       <div className="flex mt-16 sm:mt-8 flex-col items-center w-16 h-full min-h-screen z-10 overflow-auto text-gray-700  bg-white/30 backdrop-blur-2xl sm:hidden border-r">
@@ -73,7 +75,7 @@ const DashBoardSidebar = () => {
       </div>
 
       {/* Big screen */}
-      <div className="md:flex mt-16 sm:mt-8 flex-col items-center w-60  h-full min-h-screen rounded divide-x hidden  bg-white/30 backdrop-blur-2xl border-r">
+      <div className="md:flex mt-16 sm:mt-12 flex-col items-center w-60  h-full min-h-screen rounded divide-x hidden  bg-white/30 backdrop-blur-2xl border-r">
         <div className="w-full ">
           <div className="flex flex-col items-center w-full ">
             <Link

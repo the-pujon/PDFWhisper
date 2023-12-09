@@ -94,7 +94,7 @@ const ChatsWrapper = ({ fileId }: ChatsWrapperProps) => {
 
   return (
     <ChatProvider fileId={fileId}>
-      <div className="relative min-h-full bg-zinc-50 flex flex-col justify-between gap-10">
+      <div className="relative  min-h-full bg-zinc-50 flex flex-col justify-between gap-10">
         <div className="flex-1 justify-between flex flex-col mb-32">
           <Messages fileId={fileId} />
         </div>

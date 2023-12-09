@@ -41,7 +41,7 @@ const UpdateFAQ = ({ setUpdatableFAQ, updatableFAQ }: UpdateFAQProps) => {
 
   return (
     <div className="p-5">
-      <div className="text-5xl text-black font-bold mb-5">Update FAQ</div>
+      <div className="text-4xl sm:text-5xl text-black font-bold mb-5">Update FAQ</div>
 
       <form
         onSubmit={(e) => {

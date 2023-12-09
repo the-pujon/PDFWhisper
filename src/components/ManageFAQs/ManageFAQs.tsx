@@ -45,7 +45,7 @@ const ManageFAQs = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row w-full h-screen divide-x min-h-screen overflow-auto">
+    <div className="flex flex-col md:flex-row w-full h-screen divide-x min-h-screen overflow-auto mt-0 sm:mt-8">
       <div className="flex-1">
         <div>
           <div className={`${updatableFAQ ? "hidden" : "block"} sm:block`}>

@@ -13,35 +13,64 @@ import { faqRouter } from './faq';
 import { userRouter } from './users';
 
 export const appRouter = router({
+
     authCallback: publicProcedure.query(async () => {
         const { getUser } = getKindeServerSession()
         const user = getUser()
 
-        if (!user.id || !user.email || !user) {
-            throw new TRPCError({ code: 'UNAUTHORIZED' })
-        }
+        if (!user?.id || !user?.email)
+          throw new TRPCError({ code: 'UNAUTHORIZED' })
 
         // check if the user is in the database
         const dbUser = await db.user.findFirst({
-            where: {
-
-                id: user.id,
-            },
+          where: {
+            id: user.id,
+          },
         })
 
         if (!dbUser) {
-            // create user in db
-            await db.user.create({
-                data: {
-                    name: user.given_name + ' ' + user.family_name,
-                    id: user.id,
-                    email: user.email,
-                },
-            })
+          // create user in db
+          await db.user.create({
+            data: {
+                name: user.given_name + ' ' + user.family_name,
+                id: user.id,
+                email: user.email,
+            },
+        })
         }
 
         return { success: true }
-    }),
+      }),
+
+    //authCallback: publicProcedure.query(async () => {
+    //    const { getUser } = getKindeServerSession()
+    //    const user = getUser()
+
+    //    if (!user?.id || !user?.email || !user) {
+    //        console.log("here")
+    //        throw new TRPCError({ code: 'UNAUTHORIZED' })
+    //    }
+
+    //    // check if the user is in the database
+    //    const dbUser = await db.user.findFirst({
+    //        where: {
+    //            id: user.id,
+    //        },
+    //    })
+
+    //    if (!dbUser) {
+    //        // create user in db
+    //        await db.user.create({
+    //            data: {
+    //                name: user.given_name + ' ' + user.family_name,
+    //                id: user.id,
+    //                email: user.email,
+    //            },
+    //        })
+    //    }
+
+    //    return { success: true }
+    //}),
     getUserFiles: privateProcedure.query(async ({ ctx }) => {
         return await db.file.findMany({
             where: {

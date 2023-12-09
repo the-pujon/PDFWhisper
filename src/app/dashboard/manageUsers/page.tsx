@@ -1,4 +1,3 @@
-import { trpc } from "@/app/_trpc/client";
 import ManageUsers from "@/components/ManageUsers/ManageUsers";
 import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
 import React from "react";
@@ -10,14 +9,14 @@ const Page = async () => {
   const { getUser } = getKindeServerSession();
   const user = getUser();
 
-  if (!user || !user.id) redirect("/auth-callback?origin=dashboard");
+  if (!user || !user.id) redirect("/auth-callback?origin=dashboard/manageUsers");
 
   const dbUser = await db.user.findFirst({
     where: {
       id: user.id,
     },
   });
-  if (!dbUser) redirect("/auth-callback?origin=dashboard");
+  if (!dbUser) redirect("/auth-callback?origin=dashboard/manageUsers");
 
   return <div><ManageUsers/></div>;
 };
