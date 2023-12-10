@@ -22,13 +22,36 @@ const UploadPDF = ({ isSubscribed }: { isSubscribed: boolean }) => {
     isSubscribed ? "proPlanUploader" : "freePlanUploader"
   );
 
+  //const { mutate: getPDFFile } = trpc.getFile.useMutation({
+  //  onSuccess: (file) => {
+  //    router.push(`/dashboard/${file.id}`);
+  //  },
+  //  retry: true,
+  //  retryDelay: 500,
+  //});
+
   const { mutate: getPDFFile } = trpc.getFile.useMutation({
     onSuccess: (file) => {
+      console.log('File successfully retrieved:', file);
       router.push(`/dashboard/${file.id}`);
     },
-    retry: true,
+    onError: (error) => {
+      console.error('Error retrieving file:', error);
+    },
+    //retry: true,
+    retry: (failureCount, err) => {
+      console.log(err)
+      if (err.message === "UNAUTHORIZED") {
+        // stop retrying on Unauthorized, report in onError
+        return false
+      } else {
+        // also keep retrying
+        return true
+      }
+    },
     retryDelay: 500,
   });
+
 
   const showProgress = () => {
     setUploadProgress(0);
