@@ -22,13 +22,13 @@ const UploadPDF = ({ isSubscribed }: { isSubscribed: boolean }) => {
     isSubscribed ? "proPlanUploader" : "freePlanUploader"
   );
 
-  //const { mutate: getPDFFile } = trpc.getFile.useMutation({
-  //  onSuccess: (file) => {
-  //    router.push(`/dashboard/${file.id}`);
-  //  },
-  //  retry: true,
-  //  retryDelay: 500,
-  //});
+  const { mutate: getPDFFile } = trpc.getFile.useMutation({
+    onSuccess: (file) => {
+      router.push(`/dashboard/${file.id}`);
+    },
+    retry: true,
+    retryDelay: 500,
+  });
 
   const showProgress = () => {
     setUploadProgress(0);
@@ -107,7 +107,8 @@ const UploadPDF = ({ isSubscribed }: { isSubscribed: boolean }) => {
             setUploadProgress(100);
 
             if (key) {
-              window.location.reload();
+              getPDFFile({key})
+              //window.location.reload();
             } else {
               toast({
                 variant: "destructive",
