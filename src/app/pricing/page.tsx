@@ -76,7 +76,7 @@ const Page = () => {
         <div className="mx-auto mb-10 sm:max-w-lg">
           <h1 className="text-6xl font-bold sm:text-7xl">Subscription</h1>
           <p className="mt-5 text-gray-600 sm:text-lg">
-          Whether you're a beginner or looking for advanced options, our service is designed to accommodate every user. Experience the convenience tailored just for you.
+          Whether you&apos;re a beginner or looking for advanced options, our service is designed to accommodate every user. Experience the convenience tailored just for you.
           </p>
         </div>
 

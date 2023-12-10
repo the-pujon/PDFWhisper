@@ -1,6 +1,5 @@
 "use client";
 
-import { getUserSubscriptionPlan } from "@/lib/stripe";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowRight, Gem, Menu } from "lucide-react";
 import Image from "next/image";
@@ -32,6 +31,7 @@ const MobileNav = ({
 
   useEffect(() => {
     if (isOpen) toggleOpen();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname]);
 
   // for close the mobile menu when the current page is selected
