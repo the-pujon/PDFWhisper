@@ -107,12 +107,7 @@ const UploadPDF = ({ isSubscribed }: { isSubscribed: boolean }) => {
             setUploadProgress(100);
 
             if (key) {
-              //getPDFFile({ key });
-              //router.push(`/dashboard/${key}`);
-              //router.push(`/`);
               window.location.reload();
-
-
             } else {
               toast({
                 variant: "destructive",
