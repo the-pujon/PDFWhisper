@@ -78,7 +78,7 @@ export const appRouter = router({
             }
         })
     }),
-    getFile: privateProcedure.input(z.object({ key: z.string() })).query(async ({ ctx,input }) => {
+    getFile: privateProcedure.input(z.object({ key: z.string() })).mutation(async ({ ctx,input }) => {
         const file = await db.file.findFirst({
             where: {
                 key: input.key,
