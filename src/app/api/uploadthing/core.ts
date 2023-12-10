@@ -60,49 +60,28 @@ const onUploadComplete = async ({
     )
 
     const blob = await response.blob()
-    console.log('blob',blob)
-
     const loader = new PDFLoader(blob)
-    console.log('loader',loader)
-
     const pageLevelDocs = await loader.load()
-    console.log('pageLevelDocs',pageLevelDocs)
-
     const pagesAmt = pageLevelDocs.length
-    console.log('pagesAmt',pagesAmt)
 
     const { subscriptionPlan } = metadata
     const { isSubscribed } = subscriptionPlan
 
-    const getPlanPagesPerPdf = (planName: string) =>
-      SubscriptionPlan.find((plan) => plan.name === planName)!.pagesPerPdf;
-
-    const isProExceeded = pagesAmt > getPlanPagesPerPdf('Pro');
-    const isFreeExceeded = pagesAmt > getPlanPagesPerPdf('Free');
-
-    console.log('isFreeExceeded',isFreeExceeded)
+    const isProExceeded = pagesAmt > SubscriptionPlan.find((plan) => plan.name === 'Pro')!.pagesPerPdf
+    const isFreeExceeded = pagesAmt > SubscriptionPlan.find((plan) => plan.name === 'Free')!.pagesPerPdf
 
     if (
       (isSubscribed && isProExceeded) ||
       (!isSubscribed && isFreeExceeded)
     ) {
-      await db.file.update({
-        data: {
-          uploadStatus: 'FAILED',
-        },
-        where: {
-          id: createdFile.id,
-        },
-      })
+      throw Error
     }
 
     const pineconeIndex = pinecone.Index('pdf')
-    console.log('pineconeIndex',pineconeIndex)
 
     const embeddings = new OpenAIEmbeddings({
       openAIApiKey: process.env.OPENAI_API_KEY,
     })
-    console.log('embeddings',embeddings)
 
     await PineconeStore.fromDocuments(
       pageLevelDocs,

@@ -4,13 +4,11 @@ import React from "react";
 import Messages from "../Messages/Messages";
 import InputMessage from "../InputMessage/InputMessage";
 import { trpc } from "@/app/_trpc/client";
-import { Loader2 } from "lucide-react";
 import { FiLoader } from "react-icons/fi";
 import Link from "next/link";
 import {
   AiOutlineCloseCircle,
   AiOutlineDoubleLeft,
-  AiOutlineLeft,
 } from "react-icons/ai";
 import { buttonVariants } from "@/components/ui/button";
 import { ChatProvider } from "../ChatProvider/ChatProvider";
@@ -27,6 +25,7 @@ const ChatsWrapper = ({ fileId }: ChatsWrapperProps) => {
         data?.status === "SUCCESS" || data?.status === "FAILED" ? false : 500,
     }
   );
+
 
   if (isLoading) {
     return (
@@ -94,7 +93,7 @@ const ChatsWrapper = ({ fileId }: ChatsWrapperProps) => {
 
   return (
     <ChatProvider fileId={fileId}>
-      <div className="relative  min-h-full bg-zinc-50 flex flex-col justify-between gap-10">
+      <div className="relative  min-h-screen bg-zinc-50 flex flex-col justify-between gap-10">
         <div className="flex-1 justify-between flex flex-col mb-32">
           <Messages fileId={fileId} />
         </div>

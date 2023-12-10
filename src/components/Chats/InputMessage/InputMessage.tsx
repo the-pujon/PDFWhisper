@@ -1,12 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
-import { Send } from "lucide-react";
-//import { Button } from '../ui/button'
-//import { Textarea } from '../ui/textarea'
 import { useContext, useRef } from "react";
 import { FiSend } from "react-icons/fi";
 import { ChatContext } from "../ChatProvider/ChatProvider";
-//import { ChatContext } from './ChatContext'
 
 interface InputMessageProps {
   isDisabled?: boolean;
@@ -27,8 +23,6 @@ const InputMessage = ({ isDisabled }: InputMessageProps) => {
               <Textarea
                 rows={1}
                 ref={textareaRef}
-                //maxRows={4}
-                //autoFocus
                 onChange={handleInputChange}
                 value={message}
                 onKeyDown={(e) => {

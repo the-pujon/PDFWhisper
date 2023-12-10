@@ -32,6 +32,7 @@ import {
 
 import SimpleBar from 'simplebar-react'
 import 'simplebar-react/dist/simplebar.min.css';
+import { FaArrowUp } from 'react-icons/fa'
 //import PdfFullscreen from './PdfFullscreen'
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
@@ -91,7 +92,8 @@ const PDFShower = ({ url }: PDFShowerProps) => {
   return (
     <div className='w-full bg-white rounded-md shadow flex flex-col items-center'>
       <div className='h-14 w-full border-b border-zinc-200 flex items-center justify-between px-2'>
-        <div className='flex items-center gap-1.5'>
+        <div className='flex items-center gap-0'>
+          {/* up button */}
           <Button
             disabled={currPage <= 1}
             onClick={() => {
@@ -101,15 +103,18 @@ const PDFShower = ({ url }: PDFShowerProps) => {
               setValue('page', String(currPage - 1))
             }}
             variant='ghost'
+            className='p-2 flex item-center justify-center'
             aria-label='previous page'>
-            <ChevronDown className='h-4 w-4' />
+             <ChevronUp className='h-4 w-4' />
+             {/*<FaArrowUp/>*/}
           </Button>
 
+{/* input */}
           <div className='flex items-center gap-1.5'>
             <Input
               {...register('page')}
               className={cn(
-                'w-12 h-8',
+                'w-10 h-8',
                 errors.page && 'focus-visible:ring-red-500'
               )}
               onKeyDown={(e) => {
@@ -136,8 +141,10 @@ const PDFShower = ({ url }: PDFShowerProps) => {
               setValue('page', String(currPage + 1))
             }}
             variant='ghost'
+            className='p-2 flex item-center justify-center'
             aria-label='next page'>
-            <ChevronUp className='h-4 w-4' />
+
+            <ChevronDown className='h-4 w-4' />
           </Button>
         </div>
 

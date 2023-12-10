@@ -22,7 +22,7 @@ const Message = forwardRef<HTMLDivElement, MessageProps>(
           {/* Icons */}
           <div
             className={cn(
-              "relative flex h-6 w-6 aspect-square items-center justify-center",
+              "relative p-1 rounded-full flex h-6 w-6  items-center justify-center",
               {
                 "order-2 bg-primary rounded-sm": message?.isUserMessage,
                 "order-1 bg-zinc-800 rounded-sm": !message?.isUserMessage,

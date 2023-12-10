@@ -16,7 +16,7 @@ export const SubscriptionPlan = [
         name: 'Pro',
         slug: 'pro',
         quota: 20,
-        pagesPerPdf: 4,
+        pagesPerPdf: 10,
         price: {
             amount: 50,
             priceIds: {
@@ -25,19 +25,4 @@ export const SubscriptionPlan = [
             }
         }
     },
-    //{
-    //    name: 'Custom',
-    //    slug: 'custom',
-    //    quota: 'custom',
-    //    pagesPerPdf: 'custom',
-    //    price: {
-    //        amount: 'custom',
-    //        priceIds: {
-    //            test: process.env.STRIPE_PRICE_API_ID,
-    //            production: ''
-    //        }
-    //    }
-    //}
-
-
 ]

@@ -1,17 +1,15 @@
 "use client";
 
 import DashBoardSidebar from "@/components/DashBoardSidebar/DashBoardSidebar";
-import React, { useEffect } from "react";
+import React from "react";
 import { trpc } from "../_trpc/client";
-import { useParams, useRouter } from "next/navigation";
+import { useParams } from "next/navigation";
 
 
 const DashLayout = ({ children }: { children: React.ReactNode }) => {
   const { data: isAdmin } = trpc.user.getAdmin.useQuery();
 
-const params = useParams()
-
-
+  const params = useParams()
 
   return (
     <div className="flex justify-between w-full ">

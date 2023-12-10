@@ -10,12 +10,9 @@ import {
   FaRegUserCircle,
 } from "react-icons/fa";
 import { MdOutlineContactMail, MdOutlineFeedback } from "react-icons/md";
-//import { FaRegCircleQuestion } from "react-icons/fa6";
 
 const DashBoardSidebar = () => {
   const pathName = usePathname();
-
-  console.log(pathName === `/dashboard/[fileid]`)
 
   return (
     <>

@@ -25,18 +25,8 @@ const Page = async () => {
   return (
     <div>
       <div className="flex justify-between w-full h-[95vh] divide-x">
-        {/*<!-- Component Start -->*/}
-
-        {/*<!-- Component End  -->*/}
-
-        {/*<!-- Component Start -->*/}
-
         <Dashboard subscriptionPlan={subscriptionPlan} />
       </div>
-
-      {/* background */}
-
-      {/*<Dashboard />*/}
     </div>
   );
 };

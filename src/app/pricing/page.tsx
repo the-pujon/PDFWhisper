@@ -24,11 +24,11 @@ const Page = () => {
       quota: 10,
       features: [
         {
-          text: "5 pages per PDF",
+          text: "2 pages per PDF",
           footnote: "The maximum amount of pages per PDF-file.",
         },
         {
-          text: "4MB file size limit",
+          text: "2MB file size limit",
           footnote: "The maximum file size of a single PDF file.",
         },
         {
@@ -36,7 +36,6 @@ const Page = () => {
         },
         {
           text: "Higher-quality responses",
-          footnote: "Better algorithmic responses for enhanced content quality",
           negative: true,
         },
         {
@@ -51,11 +50,11 @@ const Page = () => {
       quota: SubscriptionPlan.find((p) => p.slug === "pro")!.quota,
       features: [
         {
-          text: "25 pages per PDF",
+          text: "10 pages per PDF",
           footnote: "The maximum amount of pages per PDF-file.",
         },
         {
-          text: "16MB file size limit",
+          text: "4MB file size limit",
           footnote: "The maximum file size of a single PDF file.",
         },
         {
@@ -63,32 +62,6 @@ const Page = () => {
         },
         {
           text: "Higher-quality responses",
-          footnote: "Better algorithmic responses for enhanced content quality",
-        },
-        {
-          text: "Priority support",
-        },
-      ],
-    },
-    {
-      plan: "Custom",
-      tagline: "For larger projects with higher needs.",
-      quota: SubscriptionPlan.find((p) => p.slug === "custom")!.quota,
-      features: [
-        {
-          text: "25 pages per PDF",
-          footnote: "The maximum amount of pages per PDF-file.",
-        },
-        {
-          text: "16MB file size limit",
-          footnote: "The maximum file size of a single PDF file.",
-        },
-        {
-          text: "Mobile-friendly interface",
-        },
-        {
-          text: "Higher-quality responses",
-          footnote: "Better algorithmic responses for enhanced content quality",
         },
         {
           text: "Priority support",
@@ -103,12 +76,11 @@ const Page = () => {
         <div className="mx-auto mb-10 sm:max-w-lg">
           <h1 className="text-6xl font-bold sm:text-7xl">Subscription</h1>
           <p className="mt-5 text-gray-600 sm:text-lg">
-            Whether you&apos;re just trying out our service or need more,
-            we&apos;ve got you covered.
+          Whether you're a beginner or looking for advanced options, our service is designed to accommodate every user. Experience the convenience tailored just for you.
           </p>
         </div>
 
-        <div className="pt-12 grid grid-cols-1 gap-10 lg:grid-cols-3">
+        <div className="pt-12 grid grid-cols-1 gap-10 lg:grid-cols-2">
           <TooltipProvider>
             {pricingItems.map(({ plan, tagline, quota, features }) => {
               const price =
@@ -141,21 +113,7 @@ const Page = () => {
                     <p className="text-gray-500">per month</p>
                   </div>
 
-                  {/* subscription day details */}
-                  <div className="flex h-20 items-center justify-center border-b border-t border-gray-200 bg-gray-50">
-                    <div className="flex items-center space-x-1">
-                      <p>{quota.toLocaleString()} PDFs/mo included</p>
 
-                      <Tooltip delayDuration={300}>
-                        <TooltipTrigger className="cursor-default ml-1.5">
-                          <HelpCircle className="h-4 w-4 text-zinc-500" />
-                        </TooltipTrigger>
-                        <TooltipContent className="w-80 p-2">
-                          How many PDFs you can upload per month.
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                  </div>
 
                   {/* Plan */}
                   <ul className="my-10 space-y-5 px-8">
@@ -216,7 +174,7 @@ const Page = () => {
                       </Link>
                     ) : user && plan === "Pro" ? (
                       <UpgradeButton />
-                    ) : (
+                    )  : (
                       <Link
                         href="/sign-in"
                         className={buttonVariants({
@@ -225,8 +183,6 @@ const Page = () => {
                       >
                         {user && plan === "Pro"
                           ? "Upgrade now"
-                          : user && plan === "Custom"
-                          ? "Email us"
                           : "Sign up"}
                         <ArrowRight className="h-5 w-5 ml-1.5" />
                       </Link>

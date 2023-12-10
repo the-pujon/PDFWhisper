@@ -13,7 +13,6 @@ interface PageProps {
 export async function generateStaticParams() {
   const files =await db.file.findMany()
   return files.map((file)=>{
-    //console.log(file.id)
     return {
       fileid: file.id
     }

@@ -21,13 +21,8 @@ interface DashboardProps {
 }
 
 const Dashboard = ({ subscriptionPlan }: DashboardProps) => {
-  //const { data: files,isLoading } = trpc.getUserFiles.useQuery()
 
-  const [uploadedFileId, setUploadedFileId] = useState<string | null>(null);
-
-  const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<
-    string | null
-  >(null);
+  const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<string | null>(null);
 
   const utils = trpc.useContext();
   const { toast } = useToast();
@@ -71,19 +66,17 @@ const Dashboard = ({ subscriptionPlan }: DashboardProps) => {
             )
             .map((file) => (
               <li
-                //{...getdate(file.id)}
                 key={file.id}
                 className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white/30 backdrop-blur-2xl shadow-md transition hover:shadow-lg "
               >
                 <div className="px-6 flex justify-end py-2 gap-6 text-xs text-zinc-500">
                   <div className="flex items-center gap-2">
-                    {/*<Plus className='h-4 w-4' />*/}
                     <MdOutlineUpdate />
 
                     {format(new Date(file.createdAt), "dd MMM yyyy")}
                   </div>
                 </div>
-                {/*{getFileID(file.id)}*/}
+
                 <Link
                   href={`/dashboard/${file.id}`}
                   className="flex flex-col gap-2"
@@ -128,7 +121,6 @@ const Dashboard = ({ subscriptionPlan }: DashboardProps) => {
         <Skeleton height={100} className="my-2" count={3} />
       ) : (
         <div className="mt-16 flex flex-col items-center gap-2">
-          {/*<Ghost className='h-8 w-8 text-zinc-800' />*/}
           <h3 className="font-semibold text-xl">Pretty empty around here</h3>
           <p>Let&apos;s upload your first PDF.</p>
         </div>

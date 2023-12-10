@@ -54,13 +54,6 @@ const UploadPDF = ({ isSubscribed }: { isSubscribed: boolean }) => {
           const fileSize = parseFloat(
             (acceptedFiles[0].size / 1024).toFixed(2)
           );
-          console.log(
-            fileSize > 16 && fileSize < 512
-              ? "Please Upload less then 2MB"
-              : fileSize > 512
-              ? "Please Upload less then 4MB"
-              : "Please try again"
-          );
 
           const progress = showProgress();
 
@@ -88,7 +81,7 @@ const UploadPDF = ({ isSubscribed }: { isSubscribed: boolean }) => {
                     ) : fileSize > 4 && isSubscribed ? (
                       <div className="w-full flex justify-between items-center text-sm">
                         <span>
-                          Our Pro plan does not support pdf more then 4MB and 4
+                          Our Pro plan does not support pdf more then 4MB and 10
                           Page. Please Upload less then 4MB and 4 page
                         </span>
                         <Link
