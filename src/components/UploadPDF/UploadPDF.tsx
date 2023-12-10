@@ -107,7 +107,7 @@ const UploadPDF = ({ isSubscribed }: { isSubscribed: boolean }) => {
             setUploadProgress(100);
 
             if (key) {
-              getPDFFile({ key: key });
+              getPDFFile({ key });
             } else {
               toast({
                 variant: "destructive",
