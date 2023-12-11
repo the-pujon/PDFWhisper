@@ -10,6 +10,7 @@ import { ArrowRight } from "lucide-react";
 import UserAccountNav from "../UserAccountNav/UserAccountNav";
 import MobileNav from "../MobileNavbar/MobileNavbar";
 import { getUserSubscriptionPlan } from "@/lib/stripe";
+import Image from "next/image";
 
 const Navbar = async () => {
   const { getUser } = getKindeServerSession();
@@ -22,7 +23,14 @@ const Navbar = async () => {
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between border-b border-zinc-200">
           <Link href="/" className="flex z-40 font-semibold">
-            <span>PDFWhishper.</span>
+          <Image
+                    src="/logo2.png"
+                    alt="product preview"
+                    width={130}
+                    height={10}
+                    quality={100}
+
+                  />
           </Link>
           {/* mobile responsive navbar component */}
           <MobileNav

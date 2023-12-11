@@ -1,6 +1,7 @@
 "use client";
 
 import { format } from "date-fns";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -20,7 +21,14 @@ export const Footer = () => {
             className="inline-flex items-center"
           >
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
-              PDFWhisper
+            <Image
+                    src="/logo2.png"
+                    alt="product preview"
+                    width={250}
+                    height={10}
+                    quality={100}
+
+                  />
             </span>
           </a>
           <div className="mt-6 lg:max-w-sm">
