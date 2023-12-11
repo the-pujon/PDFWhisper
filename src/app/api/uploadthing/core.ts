@@ -54,7 +54,6 @@ const onUploadComplete = async ({
     },
   })
 
-  console.log(createdFile)
 
   try {
     const response = await fetch(
@@ -93,7 +92,6 @@ const onUploadComplete = async ({
       }
     )
 
-    console.log("here")
     await db.file.update({
       data: {
         uploadStatus: 'SUCCESS',

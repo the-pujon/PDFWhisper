@@ -15,7 +15,6 @@ function LatestMsg({
   // Extract the text and userMessage properties
   const { text = "",isUserMessage = false } = latestMsg || {};
 
-  //console.log(text.length);
 
   return (
     <div className={className}>
