@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "PDFWhisper - Unveiling Conversations Within the Pages",
   description: "Unleash the power of conversation within your PDFs with PDFWhisper. Transform static files into dynamic dialogues for a revolutionary document experience.",
+  icons:{
+    icon: '/favicon.png'
+  }
 };
 
 export default function RootLayout({
