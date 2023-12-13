@@ -29,7 +29,6 @@ const ManageUsers = () => {
    * getting user data
    */
   const { data: users } = trpc.user.getUsers.useQuery();
-  console.log(users);
 
   /**
    * updating user
