@@ -107,7 +107,7 @@ export default function Home() {
         </div>
 
         {/* steps */}
-        <div className="flex flex-col sm:flex-row w-full divide-y-2 sm:divide-x-2 mx-auto border-y-2">
+        <div className="flex flex-col lg:flex-row w-full divide-y-2 lg:divide-x-2 mx-auto border-y-2">
           {/* step1 */}
           <div className="flex flex-col items-start justify-center py-10 sm:py-16 px-6 sm:px-[3rem] relative ">
             <span className="flex text-[10rem] sm:text-[12rem] font-bold text-primary opacity-50  absolute -z-10 -right-4 ">
@@ -129,7 +129,7 @@ export default function Home() {
               </Link>
               .
             </p>
-            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full hidden sm:block">
+            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full hidden lg:block">
               <FaArrowRight />
             </div>
           </div>
@@ -146,7 +146,7 @@ export default function Home() {
               We&apos;ll process your file and make it ready for you to chat
               with. .
             </p>
-            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full hidden sm:block">
+            <div className="absolute border-2 p-4 -right-7 bg-white z-10 rounded-full hidden lg:block">
               <FaArrowRight />
             </div>
           </div>
