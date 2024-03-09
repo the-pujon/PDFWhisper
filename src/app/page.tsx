@@ -4,7 +4,7 @@ import WidthWrapper from "@/components/WidthWrapper/WidthWrapper";
 import { buttonVariants } from "@/components/ui/button";
 import Image from "next/image";
 import Link from "next/link";
-import { FaArrowRight, FaFilePdf } from "react-icons/fa";
+import { FaArrowRight,FaFilePdf } from "react-icons/fa";
 import { GiArchiveRegister } from "react-icons/gi";
 import { HiChatAlt2 } from "react-icons/hi";
 
@@ -13,20 +13,20 @@ export default function Home() {
     <main>
       {/* Banner */}
       <WidthWrapper className="mb-12 mt-28 sm:mt-52 flex flex-col items-center justify-center">
-        <div className="flex flex-col justify-center md:flex-row items-center gap-7 sm:gap-3">
-          <div className="flex items-center justify-center md:block flex-col gap-2">
-            <h1 className=" max-w-4xl text-center text-4xl md:text-6xl lg:text-7xl font-bold md:text-start">
+        <div className="flex flex-col justify-center lg:flex-row items-center gap-7 sm:gap-3">
+          <div className="flex flex-1 items-center justify-center lg:block flex-col gap-2">
+            <h1 className=" max-w-4xl text-center text-4xl md:text-5xl lg:text-4xl xl:text-7xl font-bold lg:text-start">
               Unlock the Power of Conversational
               <span className="text-primary"> PDFs!</span>
             </h1>
-            <p className="mt-5 max-w-prose text-center md:text-start text-secondary-foreground/70 text-sm md:text-xl">
+            <p className="mt-3 max-w-prose text-center lg:text-start text-secondary-foreground/70 text-sm md:text-xl lg:text-sm xl:text-xl">
               <span className="text-primary font-normal">PDFWhisper </span>
               Facilitating Dynamic Conversations Inside Your PDFs...
             </p>
             <Link
               className={buttonVariants({
                 className:
-                  "text-sm md:text-xl mt-3 sm:mt-10 py-0 md:py-6 bg-foreground hover:animate-out hover:repeat-1",
+                  "text-sm xl:text-xl mb-5 sm:mt-5 py-0 md:py-6 bg-foreground hover:animate-out hover:repeat-1 inline text-center",
               })}
               href={`/dashboard`}
               target="_blank"
@@ -35,20 +35,35 @@ export default function Home() {
             </Link>
           </div>
           <div>
-            <div className="mx-auto w-full md:w-[60rem] max-w-6xl px-6 lg:px-8 z-20">
+            {/*<div className="mx-auto w-full  max-w-6xl px-6 lg:px-8 z-20">
               <div className=" flow-root ">
                 <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
                   <Image
                     src="/chat_preview.png"
                     alt="product preview"
-                    width={1364}
-                    height={866}
-                    quality={100}
-                    className="rounded-md bg-white p-2 sm:p-4 md:p-6 shadow-2xl ring-1 ring-gray-900/10"
+                    width={500}
+                    height={500}
+                    //quality={100}
+                    className="rounded-md w-10/12 bg-white p-2 sm:p-4 md:p-6 shadow-2xl ring-1 ring-gray-900/10"
                   />
                 </div>
               </div>
+            </div>*/}
+            <div className="mx-auto w-full max-w-6xl px-6 lg:px-8 z-20">
+              {/*<div className="flow-root">*/}
+                <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+                  <Image
+                    src="/chat_preview.png"
+                    alt="product preview"
+                    width={1000}
+                    height={1000}
+                    layout="responsive" // Ensure responsive layout
+                    className="rounded-md bg-white shadow-2xl ring-1 ring-gray-900/10"
+                  />
+                </div>
+              {/*</div>*/}
             </div>
+
           </div>
         </div>
       </WidthWrapper>

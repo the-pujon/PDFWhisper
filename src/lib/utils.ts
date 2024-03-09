@@ -9,6 +9,5 @@ export function absoluteUrl(path: string) {
   if (typeof window !== 'undefined') return path
   if (process.env.VERCEL_URL)
     return `${process.env.NEXT_URL}${path}`
-  return `http://localhost:${process.env.PORT ?? 3000
-    }${path}`
+  return `http://localhost:${process.env.PORT ?? 3000}${path}`
 }
