@@ -20,7 +20,6 @@ This a AI based web application where user can chat with their pdf documents. Us
 
 ## For making this web application I used-
 - next js
-- node.js
 - prisma
 - mysql
 - react
