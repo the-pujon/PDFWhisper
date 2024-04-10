@@ -123,7 +123,7 @@ export default function Home() {
               Either starting out with a free plan or choose our
               <Link
                 href="/pricing"
-                className="text-blue-700 underline underline-offset-2"
+                className="text-blue-700 underline underline-offset-2 ml-1"
               >
                 pro plan
               </Link>
